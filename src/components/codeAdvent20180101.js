@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import data from "./AdventCodeInputs/CodeAdvent201801.json";
+import "./component.css";
 
 export const CodeAdvent20180101 = () => {
   const [frequencyChanges, setFrequencyChanges] = useState(data);
@@ -35,14 +36,13 @@ export const CodeAdvent20180101 = () => {
     <div>
       <p style={{ fontWeight: "bold" }}>Frequency Calibration:</p>
       <p>Recalibrated freuqency is: {recalibration} </p>
-      <button style={{ backgroundColor: "darkgreen" }} onClick={handleClick}>
-        Calibrate
+      <button style={{ backgroundColor: "#6BAA75" }} onClick={handleClick}><span>Calibrate </span>
       </button>
-      <button style={{ backgroundColor: "grey" }} onClick={handleReset}>
-        Reset
+      <button style={{ backgroundColor: "#A7A7A9" }} onClick={handleReset}>
+      <span>Reset </span>
       </button>
-      <button style={{ backgroundColor: "orange" }} onClick={handleRandomize}>
-        Randomize
+      <button style={{ backgroundColor: "#69747C" }} onClick={handleRandomize}>
+      <span>Randomize </span>
       </button>
       
     </div>

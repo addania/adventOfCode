@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import data from "./AdventCodeInputs/CodeAdvent201803.json";
+import "./component.css";
 
 export const CodeAdvent20180301 = () => {
   const [claims, setClaims] = useState(data);
@@ -16,9 +17,9 @@ export const CodeAdvent20180301 = () => {
     <div>
       <p style={{ fontWeight: "bold" }}>Santa Fabric Overlaps:</p>
       <p>Number of overlaps: {JSON.stringify(overlaps)}</p>
-      <p>Unique claim (with NO overlaps): {JSON.stringify(uniqueClaim)}</p>
-      <button style={{ backgroundColor: "darkgreen" }} onClick={handleClick}>
-        Check Overlaps
+      <p>Unique claim: {JSON.stringify(uniqueClaim)}</p>
+      <button style={{ backgroundColor: "#69747C" }} onClick={handleClick}>
+      <span>Check Overlaps</span>
       </button>
     </div>
   );

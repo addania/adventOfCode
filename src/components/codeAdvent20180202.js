@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import data from "./AdventCodeInputs/CodeAdvent201802.json";
+import "./component.css";
 
 export const CodeAdvent20180202 = () => {
   const [boxIDs, setboxIDs] = useState(data);
@@ -12,10 +13,10 @@ export const CodeAdvent20180202 = () => {
 
   return (
     <div>
-      <p style={{ fontWeight: "bold" }}>Correct Box IDs:</p>
-      <p>Correct Box IDs {JSON.stringify(correctBoxIDs)}</p>
-      <button style={{ backgroundColor: "darkgreen" }} onClick={handleClick}>
-        Correct IDs
+      <p style={{ fontWeight: "bold" }}>Compare Box IDs:</p>
+      <p>Matching Box IDs {JSON.stringify(correctBoxIDs)}</p>
+      <button style={{ backgroundColor: "#A7A7A9" }} onClick={handleClick}>
+      <span>Correct IDs</span>
       </button>
     </div>
   );

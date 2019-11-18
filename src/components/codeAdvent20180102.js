@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import data from "./AdventCodeInputs/CodeAdvent201801.json";
+import "./component.css";
 
-export const CodeAdvent20180102newOptimizedwithImport = () => {
+export const CodeAdvent20180102 = () => {
   const [array, setArray] = useState(data);
   const [total, setTotal] = useState(0);
   const [uniq, setUniq] = useState({ 0: 1 });
@@ -35,11 +36,11 @@ export const CodeAdvent20180102newOptimizedwithImport = () => {
   return (
     <div>
       <p style={{ fontWeight: "bold" }}>
-        Duplicate Frequencies OPTMIZED:
+        Find duplicate frequencies:
       </p>
       <p>Duplicate frequencies are: {JSON.stringify(result)}</p>
-      <button style={{ backgroundColor: "darkgreen" }} onClick={handleClick}>
-        Find Duplicate Frequency
+      <button style={{ backgroundColor: "#69747C" }} onClick={handleClick}>
+      <span>Find Duplicates</span>
       </button>
       
     </div>

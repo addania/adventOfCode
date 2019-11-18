@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import data from "./AdventCodeInputs/CodeAdvent201802.json";
+import "./component.css";
 
 export const CodeAdvent20180201 = () => {
   const [boxIDs, setboxIDs] = useState(data);
@@ -11,11 +12,11 @@ export const CodeAdvent20180201 = () => {
 
   return (
     <div>
-      <p style={{ fontWeight: "bold" }}>Boxes Checksum:</p>
+      <p style={{ fontWeight: "bold" }}>Boxes checksum:</p>
       {/* <p>Boxes Ids: {JSON.stringify(boxIDs)}</p> */}
       <p>CheckSum: {JSON.stringify(checkSum)}</p>
-      <button style={{ backgroundColor: "darkgreen" }} onClick={handleClick}>
-        onClick
+      <button style={{ backgroundColor: "#6BAA75" }} onClick={handleClick}>
+      <span>Calculate</span>
       </button>
     </div>
   );
