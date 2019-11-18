@@ -36,6 +36,7 @@ export default() =>
         <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
           <Col sm={3} ><p>Task 2018 01 01</p>
             <a href="https://adventofcode.com/2018/day/1" style={{fontSize: "12px"}}>Go to task</a></Col>
+          
           <Col sm={9} style={{ maxWidth: "100%" }}>
             <CodeAdvent20180101 />
           </Col>

@@ -40,7 +40,7 @@ export const CodeAdvent20180102 = () => {
       </p>
       <p>Duplicate frequencies are: {JSON.stringify(result)}</p>
       <button style={{ backgroundColor: "#69747C" }} onClick={handleClick}>
-      <span>Find Duplicates</span>
+      <span onClick={handleClick}>Find Duplicates</span>
       </button>
       
     </div>

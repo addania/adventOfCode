@@ -19,7 +19,7 @@ export const CodeAdvent20180301 = () => {
       <p>Number of overlaps: {JSON.stringify(overlaps)}</p>
       <p>Unique claim: {JSON.stringify(uniqueClaim)}</p>
       <button style={{ backgroundColor: "#69747C" }} onClick={handleClick}>
-      <span>Check Overlaps</span>
+      <span onClick={handleClick}>Check Overlaps</span>
       </button>
     </div>
   );

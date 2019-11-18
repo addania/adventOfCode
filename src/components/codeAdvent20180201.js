@@ -16,7 +16,7 @@ export const CodeAdvent20180201 = () => {
       {/* <p>Boxes Ids: {JSON.stringify(boxIDs)}</p> */}
       <p>CheckSum: {JSON.stringify(checkSum)}</p>
       <button style={{ backgroundColor: "#6BAA75" }} onClick={handleClick}>
-      <span>Calculate</span>
+      <span onClick={handleClick}>Calculate</span>
       </button>
     </div>
   );

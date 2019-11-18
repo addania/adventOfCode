@@ -16,7 +16,7 @@ export const CodeAdvent20180202 = () => {
       <p style={{ fontWeight: "bold" }}>Compare Box IDs:</p>
       <p>Matching Box IDs {JSON.stringify(correctBoxIDs)}</p>
       <button style={{ backgroundColor: "#A7A7A9" }} onClick={handleClick}>
-      <span>Correct IDs</span>
+      <span onClick={handleClick}>Correct IDs</span>
       </button>
     </div>
   );

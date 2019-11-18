@@ -36,13 +36,13 @@ export const CodeAdvent20180101 = () => {
     <div>
       <p style={{ fontWeight: "bold" }}>Frequency Calibration:</p>
       <p>Recalibrated freuqency is: {recalibration} </p>
-      <button style={{ backgroundColor: "#6BAA75" }} onClick={handleClick}><span>Calibrate </span>
+      <button style={{ backgroundColor: "#6BAA75" }} onClick={handleClick}><span onClick={handleClick}>Calibrate</span>
       </button>
       <button style={{ backgroundColor: "#A7A7A9" }} onClick={handleReset}>
-      <span>Reset </span>
+      <span  onClick={handleReset}>Reset </span>
       </button>
       <button style={{ backgroundColor: "#69747C" }} onClick={handleRandomize}>
-      <span>Randomize </span>
+      <span onClick={handleRandomize}>Randomize </span>
       </button>
       
     </div>

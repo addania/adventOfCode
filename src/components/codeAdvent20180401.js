@@ -34,7 +34,7 @@ export const CodeAdvent20180401 = () => {
       <p style={{ fontWeight: "bold" }}>Guards Observation:</p>
       <p>ID * Minutes: {JSON.stringify(result)}</p>
       <button style={{ backgroundColor: "#6BAA75" }} onClick={handleClick}>
-        <span>Compute Guard Pattern</span>
+        <span onClick={handleClick}>Get Strategy1</span>
       </button>
     </div>
   );
