@@ -4,54 +4,65 @@ import "./component.css";
 
 export const CodeAdvent20180401 = () => {
   const [observations, setObservations] = useState([
+    "[1518-11-01 00:00] Guard #10 begins shift",
+    "[1518-11-01 00:05] falls asleep",
+    "[1518-11-01 00:25] wakes up",
+    "[1518-11-01 00:30] falls asleep",
+    "[1518-11-01 00:55] wakes up",
+    "[1518-11-01 23:58] Guard #99 begins shift",
+    "[1518-11-02 00:40] falls asleep",
+    "[1518-11-02 00:50] wakes up",
     "[1518-11-03 00:05] Guard #10 begins shift",
     "[1518-11-03 00:24] falls asleep",
     "[1518-11-03 00:29] wakes up",
     "[1518-11-04 00:02] Guard #99 begins shift",
-    "[1518-11-04 00:36] falls asleep",
-    "[1518-11-01 23:58] Guard #99 begins shift",
-    "[1518-11-02 00:40] falls asleep",
-    "[1518-11-02 00:50] wakes up",
+    "[1518-11-04 00:36] falls asleep",  
     "[1518-11-04 00:46] wakes up",
     "[1518-11-05 00:03] Guard #99 begins shift",
     "[1518-11-05 00:45] falls asleep",
-    "[1518-11-05 00:55] wakes up",
-    "[1518-11-01 00:00] uard #10 begins shift",
-    "[1518-11-01 00:05] falls asleep",
-    "[1518-11-01 00:25] wakes up",
-    "[1518-11-01 00:30] falls asleep",
-    "[1518-11-01 00:55] wakes up"
+    "[1518-11-05 00:55] wakes up", 
   ]);
   const [result, setResult] = useState();
 
   function handleClick() {
-    let output = compute(observations);
-    setResult(output);
+    let output = computeObservations(observations);
+    let guardID= strategyAnalysis(output);
+    setResult(guardID);
   }
 
   return (
     <div>
       <p style={{ fontWeight: "bold" }}>Guards Observation:</p>
       <p>ID * Minutes: {JSON.stringify(result)}</p>
-      <button style={{ backgroundColor: "#6BAA75" }} onClick={handleClick}>
+      <button style={{ backgroundColor: "#6BAA75" }}>
         <span onClick={handleClick}>Get Strategy1</span>
       </button>
     </div>
   );
 };
 
-function compute(input) {
+function computeObservations(input) {
   let sortedObservations = input.sort();
-  // console.log(sortedObservations);
 
+  let countGuards=0;
+  let iteratedGuards=0;
+  for (let counter =0; counter < input.length; counter++) {
+   if (input[counter].includes("Guard")) {
+      countGuards+=1;
+   }
+  }
+
+  //console.log("countGuards is: ", countGuards)
+  let initialGuardIndex;
+  var resultArray=[];
   for (let row = 0; row < input.length; row++) {
-     let dictionary = {};
-    //debugger;
-    let initialGuardIndex = 0;
-    if (input[row].includes("Guard")) {
-    //  console.log("IM GUARD");
-      // debugger;
-      let initialGuardIndex = row;
+     
+    var dictionary = {};
+    //console.log("row iterations", row)
+    if (input[row].includes("Guard")) {       
+      initialGuardIndex = row;
+      iteratedGuards+=1;
+
       let year = input[row].slice(1, input[row].indexOf("-"));
       let month = input[row].slice(
         input[row].indexOf("-") + 1,
@@ -69,21 +80,20 @@ function compute(input) {
         input[row].indexOf(":") + 1,
         input[row].indexOf("]")
       );
-    //  console.log("YMD:", year, month, day, hour, minute);
 
-      var event = new Date(Date.UTC(year, month, day, hour, minute, 0));
-      if(event.getUTCHours()==23){
+      var event = new Date(year, month, day, hour, minute, 0);
+ 
+
+      if(event.getHours()==23){
         event.setDate(event.getDate() + 1)
 
       }else {
 
       }
       dictionary.date = event;
-      
-    //  console.log("Dict is:", dictionary);
-    //  console.log("Dict data is:", dictionary.date.toLocaleString("en-GB"));
-    // console.log("Dict data year is:", dictionary.date.getUTCFullYear());
-     // console.log("Dict data DATE is:", dictionary.date.getUTCDate());
+
+  //  console.log("Dict data year is:", dictionary.date.getFullYear());
+  //  console.log("Dict data DATE is:", dictionary.date.getDate());
 
       dictionary.id = input[row].slice(
         input[row].indexOf("#") + 1,
@@ -95,26 +105,112 @@ function compute(input) {
       }
       dictionary.times=minutes;
 
-    //  console.log(dictionary.times);
-    } else {
-    //  console.log("FALSE");
+let subsequentGuardIndex;
+    let iterate=true;
+    let endReached =false;
+    if (iteratedGuards==countGuards){
+      endReached=true;
     }
-    let subsequentGuardIndex;
+
     for (let line=row+1; line<input.length; line++){
-      if (input[line].includes("Guard")){
-        subsequentGuardIndex=line;
-        console.log(subsequentGuardIndex);
-        console.log(initialGuardIndex);
-        debugger;
+      if ((input[line].includes("Guard") && iterate) || endReached){
+        if (!endReached){
+          subsequentGuardIndex=line;
+        } else{
+          subsequentGuardIndex=input.length;
+        }
+        iterate =false;
+      }}
+
+        var sleepStarts=[];
+        var sleepEnds=[];
+        
+          for (let n=initialGuardIndex +1; n<subsequentGuardIndex; n++){
+              if (input[n].includes("asleep")){
+              
+              let min = parseInt(input[n].slice(
+                input[n].indexOf(":") + 1,
+                input[n].indexOf("]")));
+               sleepStarts.push(min);
+             
+              }
+          }
+          for (let m=initialGuardIndex +1; m<subsequentGuardIndex; m++){
+            if (input[m].includes("wakes")){
+            
+
+            let minEnd = parseInt(input[m].slice(
+              input[m].indexOf(":") + 1,
+              input[m].indexOf("]")));
+              sleepEnds.push(minEnd);
+         //    console.log("input n",input[m]);
+         //    console.log("min", minEnd);
+         //    console.log(dictionary.date);
+         //    console.log("sleep ends",sleepEnds);
+            }
+        }
+      //  console.log("sleep starts", sleepStarts);
+       
+        for (let sleepCycle=0;sleepCycle<sleepStarts.length;sleepCycle++){
+        for (let time=sleepStarts[sleepCycle]; time<sleepEnds[sleepCycle]; time++){
+        //  debugger;
+          dictionary.times[time]=dictionary.times[time]+1;
+        //  console.log("sleep cycle:", sleepCycle, "time:", time, "dict", dictionary.times);
+        }
       }
-    for (let iterate=initialGuardIndex +1; iterate<subsequentGuardIndex; iterate++){
+
+
+    } else {
 
     }
 
-    }
 
-    //console.log("initial", identifyInitialGuard);
-    //console.log("subsequent", identifySubsequentGuard);
+    
+  if (Object.entries(dictionary).length>0){
+  resultArray.push(dictionary);
   }
-  return 0;
+  }
+  //console.log(resultArray);
+  return resultArray;
 }
+
+function strategyAnalysis(input){
+  for (let i=0; i<input.length;i++){
+    let count=0;
+    for (let j=0;j<input[i].times.length;j++){
+    count=count+input[i].times[j];
+    }
+    input[i].totalMinutesPerDay=count;
+  }
+//console.log(input);
+
+let uniqueGuards=checkUniqueGuards(input);
+console.log("unique guards aree:",uniqueGuards);
+let totalSleeping=[];
+for(let guard=0;guard<uniqueGuards.length; guard++){
+  let totalMinutesCount=0;
+  for (let timeLine=0;timeLine<input.length; timeLine++){
+    if (input[timeLine].id==uniqueGuards[guard]){
+    //  debugger;
+      totalMinutesCount=totalMinutesCount+input[timeLine].totalMinutesPerDay;
+    }
+    
+  }
+  totalSleeping.push(totalMinutesCount);
+//  console.log("total minutes count", totalMinutesCount);
+}
+console.log("total sleeping times", totalSleeping);
+  return "id";
+}
+
+function checkUniqueGuards(observations){
+  var uniqueArray=[];
+  for (let i=0; i<observations.length;i++)
+    if (!uniqueArray.includes(observations[i].id)){
+      uniqueArray.push(observations[i].id);
+
+    }
+    console.log(uniqueArray);
+  return uniqueArray;
+}
+
