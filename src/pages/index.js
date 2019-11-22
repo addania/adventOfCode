@@ -8,6 +8,8 @@ import { CodeAdvent20180201 } from "../components/codeAdvent20180201.js";
 import { CodeAdvent20180202 } from "../components/codeAdvent20180202.js";
 import { CodeAdvent20180301 } from "../components/codeAdvent20180301.js";
 import { CodeAdvent20180401 } from "../components/codeAdvent20180401.js";
+import { CodeAdvent20180402 } from "../components/codeAdvent20180402.js";
+import { CodeAdvent20180501 } from "../components/codeAdvent20180501.js";
 import Background from './advent.jpg';
 
 /* COLOUR PALETTE
@@ -76,6 +78,24 @@ export default() =>
           </Col>
           <Col sm={9} style={{ maxWidth: "100%" }}>
             <CodeAdvent20180401 />
+          </Col>
+        </Row>
+        <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+          <Col sm={3}>
+            <p>Task 2018 04 02</p>
+            <a href="https://adventofcode.com/2018/day/4" style={{fontSize: "12px"}}>Go to task</a>
+          </Col>
+          <Col sm={9} style={{ maxWidth: "100%" }}>
+            <CodeAdvent20180402 />
+          </Col>
+        </Row>
+        <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+          <Col sm={3}>
+            <p>Task 2018 05 01</p>
+            <a href="https://adventofcode.com/2018/day/5" style={{fontSize: "12px"}}>Go to task</a>
+          </Col>
+          <Col sm={9} style={{ maxWidth: "100%" }}>
+            <CodeAdvent20180501 />
           </Col>
         </Row>
       </Container>

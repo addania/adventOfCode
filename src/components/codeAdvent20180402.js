@@ -3,8 +3,8 @@ import data from "./AdventCodeInputs/CodeAdvent201804.json";
 //import data from "./AdventCodeInputs/test.json";
 import "./component.css";
 
-export const CodeAdvent20180401 = () => {
-/*  const [observations, setObservations] = useState(["[1518-11-02 00:40] falls asleep",
+export const CodeAdvent20180402 = () => {
+  const [observations, setObservations] = useState(["[1518-11-02 00:40] falls asleep",
   "[1518-01-30 00:55] wakes up",
   "[1518-12-24 00:02] Guard #8 begins shift",
   "[1518-10-08 00:45] falls asleep",
@@ -34,13 +34,14 @@ export const CodeAdvent20180401 = () => {
   ]
   );
   
-*/
-  const [observations, setObservations] = useState(data);
+
+//  const [observations, setObservations] = useState(data);
   const [result, setResult] = useState();
 
   function handleClick() {
   //  debugger;
     let output = computeObservations(observations);
+    console.log(output);
     let finalNumber= strategyAnalysis(output);
     setResult(finalNumber);
   }
@@ -50,7 +51,7 @@ export const CodeAdvent20180401 = () => {
       <p style={{ fontWeight: "bold" }}>Guards Observation:</p>
       <p>ID * Minutes: {JSON.stringify(result)}</p>
       <button style={{ backgroundColor: "#6BAA75" }}>
-        <span onClick={handleClick}>Get Strategy1</span>
+        <span onClick={handleClick}>Get Strategy2</span>
       </button>
     </div>
   );
@@ -104,7 +105,7 @@ function computeObservations(input) {
      
       
       var event = new Date(something);
-      console.log(event);
+    //  console.log(event);
      
 
       if(event.getHours()==23){
@@ -193,7 +194,7 @@ let subsequentGuardIndex;
   resultArray.push(dictionary);
   }
   }
-  console.log(resultArray);
+  //console.log(resultArray);
   return resultArray;
 }
 
@@ -205,12 +206,37 @@ function strategyAnalysis(input){
     }
     input[i].totalMinutesPerDay=count;
   }
-console.log("INPUT TO STRATEGY ANALYSIS IS: ", input);
+//console.log("INPUT TO STRATEGY ANALYSIS IS: ", input);
 
 let uniqueGuards=checkUniqueGuards(input);
-console.log("unique guards aree:",uniqueGuards);
+//console.log("unique guards aree:",uniqueGuards);
+let frequencyArray=[];
+for (let guard=0; guard<uniqueGuards.length;guard++){
+  let minuteFrequency=[];
+  for (let min=0; min<60; min++){
+    minuteFrequency.push(0);
+   }
+  // console.log(minuteFrequency);
+//console.log("guard", guard);
+  for (let timeStamp=0;timeStamp<input.length;timeStamp++ ){
+    //console.log("timeStamp", timeStamp);
+    //  console.log("min", singleMinute);
+    if(input[timeStamp].id==uniqueGuards[guard]){
+      //console.log("i identified guard",uniqueGuards[guard], input[timeStamp].id, "in row", timeStamp  )
+      
+      for (let singleMinute=0;singleMinute<input[timeStamp].times.length;singleMinute++){
+       minuteFrequency[singleMinute]=minuteFrequency[singleMinute]+input[timeStamp].times[singleMinute];
+      
+    }
+    }
+
+  }
+ // console.log(minuteFrequency);
+  frequencyArray.push(minuteFrequency);
+}
+console.log(frequencyArray);
 //debugger;
-let totalSleeping=[];
+/*let totalSleeping=[];
 let maxSleepTime=0;
 let maxSleepId;
 for(let guard=0;guard<uniqueGuards.length; guard++){
@@ -226,7 +252,7 @@ for(let guard=0;guard<uniqueGuards.length; guard++){
   totalSleeping.push(totalMinutesCount);
   //console.log("total minutesCount",totalMinutesCount);
   
-  console.log("total minutes count", totalSleeping);
+  //console.log("total minutes count", totalSleeping);
 }
 for (let guy=0;guy<uniqueGuards.length;guy++){
 if (totalSleeping[guy] >maxSleepTime){
@@ -235,12 +261,13 @@ if (totalSleeping[guy] >maxSleepTime){
 }
 }
 //console.log("total sleeping times", totalSleeping);
-console.log("maxSleeptime", maxSleepTime);
-console.log("maxSleepID", maxSleepId);
+//console.log("maxSleeptime", maxSleepTime);
+//console.log("maxSleepID", maxSleepId);
 
 let finalCalculation=analyzeDays(input, maxSleepId);
 //console.log(analyzedDay);
-  return finalCalculation;
+*/
+  return 0;
 }
 
 function checkUniqueGuards(observe){
@@ -277,8 +304,8 @@ for (let value=0;value<dayStatistics.length;value++){
     maxDayID=value;
   }
 }
-console.log("max day value", maxDay, "max day ID", maxDayID);
-console.log("max sleepr",maxSleeper);
+//console.log("max day value", maxDay, "max day ID", maxDayID);
+//console.log("max sleepr",maxSleeper);
 let finalResult=maxDayID*maxSleeper;
 
 //console.log(finalResult);
