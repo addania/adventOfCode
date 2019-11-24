@@ -10,7 +10,7 @@ import { CodeAdvent20180301 } from "../components/codeAdvent20180301.js";
 import { CodeAdvent20180401 } from "../components/codeAdvent20180401.js";
 import { CodeAdvent20180402 } from "../components/codeAdvent20180402.js";
 import { CodeAdvent20180501 } from "../components/codeAdvent20180501.js";
-import Background from './advent.jpg';
+//import Background from './advent.jpg';
 
 /* COLOUR PALETTE
 

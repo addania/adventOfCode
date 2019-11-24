@@ -4,7 +4,7 @@ import data from "./AdventCodeInputs/CodeAdvent201804.json";
 import "./component.css";
 
 export const CodeAdvent20180402 = () => {
-  const [observations, setObservations] = useState(["[1518-11-02 00:40] falls asleep",
+/*  const [observations, setObservations] = useState(["[1518-11-02 00:40] falls asleep",
   "[1518-01-30 00:55] wakes up",
   "[1518-12-24 00:02] Guard #8 begins shift",
   "[1518-10-08 00:45] falls asleep",
@@ -33,15 +33,15 @@ export const CodeAdvent20180402 = () => {
   "[1518-11-02 00:50] wakes up",
   ]
   );
-  
+ */ 
 
-//  const [observations, setObservations] = useState(data);
+  const [observations, setObservations] = useState(data);
   const [result, setResult] = useState();
 
   function handleClick() {
   //  debugger;
     let output = computeObservations(observations);
-    console.log(output);
+  //  console.log(output);
     let finalNumber= strategyAnalysis(output);
     setResult(finalNumber);
   }
@@ -50,7 +50,7 @@ export const CodeAdvent20180402 = () => {
     <div>
       <p style={{ fontWeight: "bold" }}>Guards Observation:</p>
       <p>ID * Minutes: {JSON.stringify(result)}</p>
-      <button style={{ backgroundColor: "#6BAA75" }}>
+      <button style={{ backgroundColor: "#A7A7A9" }}>
         <span onClick={handleClick}>Get Strategy2</span>
       </button>
     </div>
@@ -234,7 +234,7 @@ for (let guard=0; guard<uniqueGuards.length;guard++){
  // console.log(minuteFrequency);
   frequencyArray.push(minuteFrequency);
 }
-console.log(frequencyArray);
+//console.log("frequency array", frequencyArray);
 //debugger;
 /*let totalSleeping=[];
 let maxSleepTime=0;
@@ -267,7 +267,23 @@ if (totalSleeping[guy] >maxSleepTime){
 let finalCalculation=analyzeDays(input, maxSleepId);
 //console.log(analyzedDay);
 */
-  return 0;
+let maxMinuteID;
+let maxMinuteCount=0;
+let maxGuardID;
+for (let iteration=0; iteration<frequencyArray.length; iteration++){
+  for (let m=0;m<frequencyArray[iteration].length; m++){
+    if (frequencyArray[iteration][m]>maxMinuteCount){
+    // debugger;
+     maxMinuteCount=frequencyArray[iteration][m];
+     maxMinuteID=m;
+     maxGuardID=uniqueGuards[iteration];
+    // console.log("Maxes", maxMinuteID, maxMinuteCount, maxGuardID);
+    }
+  }
+}
+console.log("Maxes", maxMinuteID, maxMinuteCount, maxGuardID);
+let finalMultiplication=maxGuardID*maxMinuteID;
+  return finalMultiplication;
 }
 
 function checkUniqueGuards(observe){
