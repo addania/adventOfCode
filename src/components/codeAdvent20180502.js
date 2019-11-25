@@ -3,15 +3,15 @@ import data from "./AdventCodeInputs/CodeAdvent201805.json";
 import "./component.css";
 
 export const CodeAdvent20180502 = () => {
-const [introPolymer, setIntroPolymer] = useState("dabAcCaCBAcCcaDA");
+// const [introPolymer, setIntroPolymer] = useState("dabAcCaCBAcCcaDA");
 
 
-//const[introPolymer, setIntroPolymer] = useState(data[0]);
+const[introPolymer, setIntroPolymer] = useState(data[0]);
 
   const [result, setResult] = useState();
 
   function handleClick() {
-    let output=polymerize(introPolymer).length;
+    let output=polymerize(introPolymer);
    setResult(output);
   }
   return (
@@ -49,25 +49,28 @@ let dict={}
 for (let char=0; char<array.length;char++){
   let dict={}
 let replacingChar=array[char]+"|"+arrayCapital[char];
-  console.log("replacing Char", replacingChar);
+  //console.log("replacing Char", replacingChar);
    var re = new RegExp(replacingChar,"g");
-   console.log("regex", re);
+   //console.log("regex", re);
    let newArray=input.replace(re, "");
-   console.log(newArray);
+   //console.log(newArray);
    var result = poly(units, newArray);
   dict.letter=array[char];
   dict.polymer=result;
-  dict.length=result.length;
-  console.log("dict", dict);
+  dict.len=result.length;
+  //console.log("dict", dict);
   resultsArray.push(dict);
-  console.log("resultsArray", resultsArray);
-  
-  
- 
+ // console.log("resultsArray", resultsArray);
 
 }
-
-  return result;
+let min=input.length;
+for (let entry=0;entry<resultsArray.length;entry++){
+  if(resultsArray[entry].len<min){
+    min=resultsArray[entry].len;
+  }
+}
+//console.log("min",min);
+  return min;
 }
 
 function poly (units, inputPolymer){

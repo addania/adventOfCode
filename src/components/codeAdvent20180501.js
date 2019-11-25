@@ -109,10 +109,21 @@ let part1 = inputPolymer.slice(0,j);
 let part2 = inputPolymer.slice(j+2,inputPolymer.length);
 inputPolymer=part1+part2;
 console.log (inputPolymer);
-recursion (units, inputPolymer);
+return recursion (units, inputPolymer);
     }
   }
 return inputPolymer;
 }
+*/
+
+/* nots from Samik: use for loop but add, break out clausee with BREAK
+use scoped variabl above forloop to get indecx, for loop will wet that scopd variabl
+outside of for look I will sreate new string (do not mutatee original) and then I call reecursion again
+return recursion (units, newNEWarray) newNEWarray consist of part 1 and 2
+115 there shouldnt be 115 line not mor return !!!!!! will b rplaced by return reecursion
+
+line 93 is always 0 bcause it is BEFOR for loop, if should be aftr for loop
+
+when
 
 */
