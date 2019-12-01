@@ -2,6 +2,10 @@ import React from "react";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Bootstrap, Row, Col, Container } from "react-bootstrap";
+import { CodeAdvent20190101 } from "../components/codeAdvent20190101.js";
+import { CodeAdvent20190102 } from "../components/codeAdvent20190102.js";
+import { CodeAdvent20190201 } from "../components/codeAdvent20190201.js";
+import { CodeAdvent20190202 } from "../components/codeAdvent20190202.js";
 import { CodeAdvent20180101 } from "../components/codeAdvent20180101.js";
 import { CodeAdvent20180102 } from "../components/codeAdvent20180102.js";
 import { CodeAdvent20180201 } from "../components/codeAdvent20180201.js";
@@ -36,8 +40,54 @@ export default() =>
     <div className="App">
       <Container>
         <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
-        <Col sm={9}><h2 style={{margin: "30px 0px", textAlign: "left", color:"#C1EDCC"}}>Advent of Code 2018</h2></Col>
+        <Col sm={9}><h2 style={{margin: "30px 0px", textAlign: "left", color:"#C1EDCC"}}>Advent of Code</h2></Col>
         <Col sm={3}><h2 style={{margin: "30px 0px", textAlign: "right", color:"#C1EDCC"}}>Addania</h2></Col>
+        </Row>
+        <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+          <Col sm={3}>
+          </Col>
+          <Col sm={9}>
+             <h2 style={{margin: "30px 0px", textAlign: "center", color:"#C1EDCC"}}>YEAR 2019</h2>
+          </Col>
+        </Row>
+        <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+          <Col sm={3} ><p>Task 2019 01 01</p>
+            <a href="https://adventofcode.com/2019/day/1" style={{fontSize: "12px"}}>Go to task</a></Col>
+          
+          <Col sm={9} style={{ maxWidth: "100%" }}>
+            <CodeAdvent20190101 />
+          </Col>
+        </Row>
+        <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+          <Col sm={3} ><p>Task 2019 01 02</p>
+            <a href="https://adventofcode.com/2019/day/1" style={{fontSize: "12px"}}>Go to task</a></Col>
+          
+          <Col sm={9} style={{ maxWidth: "100%" }}>
+            <CodeAdvent20190102 />
+          </Col>
+        </Row>
+        <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+          <Col sm={3} ><p>Task 2019 02 01</p>
+            <a href="https://adventofcode.com/2019/day/2" style={{fontSize: "12px"}}>Go to task</a></Col>
+          
+          <Col sm={9} style={{ maxWidth: "100%" }}>
+            <CodeAdvent20190201 />
+          </Col>
+        </Row>
+        <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+          <Col sm={3} ><p>Task 2019 02 02</p>
+            <a href="https://adventofcode.com/2019/day/2" style={{fontSize: "12px"}}>Go to task</a></Col>
+          
+          <Col sm={9} style={{ maxWidth: "100%" }}>
+            <CodeAdvent20190202 />
+          </Col>
+        </Row>
+        <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+          <Col sm={3}>
+          </Col>
+          <Col sm={9}>
+             <h2 style={{margin: "30px 0px", textAlign: "center", color:"#C1EDCC"}}>YEAR 2018</h2>
+          </Col>
         </Row>
         <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
           <Col sm={3} ><p>Task 2018 01 01</p>
