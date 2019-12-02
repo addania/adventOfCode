@@ -23,7 +23,7 @@ export const CodeAdvent20190102 = () => {
 };
 
 function calculateIndividualRequirements(input){
-  let requirementsArray=input.map( item=>recursion(item));
+  let requirementsArray=input.map(recursion);
   return requirementsArray;
 }
 

@@ -63,12 +63,18 @@ function generateDict(input){
 	for (let i of input){
 		//console.log(i);
 		let edgeEnd=i.indexOf(" must");
+		//console.log("edgeEnd", edgeEnd);
 		let edgeStart=edgeEnd-1;
-		let edge=input.slice(edgeStart,edgeEnd);
+		//console.log("edgeStart", edgeStart);
+		//debugger;
+		let edge=i.slice(edgeStart,edgeEnd);
+		//console.log("edge", edge);
 		let nodeEnd=i.indexOf(" can");
-		let nodeStart=edgeEnd-1;
-		let node=input.slice(nodeStart,nodeEnd);
-		console.log("node is", node, "edge is", edge);
+		let nodeStart=nodeEnd-1;
+		debugger;
+		let node=i.slice(nodeStart,nodeEnd);
+		console.log("node is", node);
+		
 		if ( node in deptDict){
 		deptDict[node].push(edge);
 		}
