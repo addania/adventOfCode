@@ -15,9 +15,9 @@ export const CodeAdvent20190301 = () => {
 
   return (
     <div>
-      <p style={{ fontWeight: "bold" }}>Crossed Wires:</p>
+      <p style={{ fontWeight: "bold" }}>Crossed Wires (in progress):</p>
       <p>Manhattan Distance: {result} </p>
-      <button style={{ backgroundColor: "#6BAA75" }}><span onClick={handleClick}>Check Wires</span>
+      <button style={{ backgroundColor: "#A7A7A9" }}><span onClick={handleClick}>Check Wires</span>
       </button>      
     </div>
   );

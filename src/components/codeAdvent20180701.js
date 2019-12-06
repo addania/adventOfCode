@@ -22,7 +22,7 @@ const[instructions, setInstructions] = useState([
   }
   return (
     <div>
-      <p style={{ fontWeight: "bold" }}>Topological Sort:</p>
+      <p style={{ fontWeight: "bold" }}>Topological Sort (in progress):</p>
       <p>Instructions order: {result} </p>
       <button style={{ backgroundColor: "#6BAA75" }} ><span onClick={handleClick}>Compute order</span>
       </button>
