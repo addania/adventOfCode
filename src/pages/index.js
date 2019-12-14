@@ -7,6 +7,9 @@ import { CodeAdvent20190102 } from "../components/codeAdvent20190102.js";
 import { CodeAdvent20190201 } from "../components/codeAdvent20190201.js";
 import { CodeAdvent20190202 } from "../components/codeAdvent20190202.js";
 import { CodeAdvent20190301 } from "../components/codeAdvent20190301.js";
+import { CodeAdvent20190302 } from "../components/codeAdvent20190302.js";
+import { CodeAdvent20190401 } from "../components/codeAdvent20190401.js";
+import { CodeAdvent20190402 } from "../components/codeAdvent20190402.js";
 import { CodeAdvent20180101 } from "../components/codeAdvent20180101.js";
 import { CodeAdvent20180102 } from "../components/codeAdvent20180102.js";
 import { CodeAdvent20180201 } from "../components/codeAdvent20180201.js";
@@ -19,6 +22,8 @@ import { CodeAdvent20180502 } from "../components/codeAdvent20180502.js";
 import { CodeAdvent20180601 } from "../components/codeAdvent20180601.js";
 import { CodeAdvent20180602 } from "../components/codeAdvent20180602.js";
 import { CodeAdvent20180701 } from "../components/codeAdvent20180701.js";
+import { FetchAPItest } from "../components/fetchAPItest.js";
+import { FetchAPItest2 } from "../components/fetchAPItest2.js";
 //import Background from './advent.jpg';
 
 /* COLOUR PALETTE
@@ -89,6 +94,30 @@ export default() =>
           
           <Col sm={9} style={{ maxWidth: "100%" }}>
             <CodeAdvent20190301 />
+          </Col>
+        </Row>
+        <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+          <Col sm={3} ><p>Task 2019 03 02</p>
+            <a href="https://adventofcode.com/2019/day/3" style={{fontSize: "12px"}}>Go to task</a></Col>
+          
+          <Col sm={9} style={{ maxWidth: "100%" }}>
+            <CodeAdvent20190302 />
+          </Col>
+        </Row>
+        <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+          <Col sm={3} ><p>Task 2019 04 01</p>
+            <a href="https://adventofcode.com/2019/day/4" style={{fontSize: "12px"}}>Go to task</a></Col>
+          
+          <Col sm={9} style={{ maxWidth: "100%" }}>
+            <CodeAdvent20190401 />
+          </Col>
+        </Row>
+        <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+          <Col sm={3} ><p>Task 2019 04 02</p>
+            <a href="https://adventofcode.com/2019/day/4" style={{fontSize: "12px"}}>Go to task</a></Col>
+          
+          <Col sm={9} style={{ maxWidth: "100%" }}>
+            <CodeAdvent20190402 />
           </Col>
         </Row>
         <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
@@ -195,6 +224,24 @@ export default() =>
           </Col>
           <Col sm={9} style={{ maxWidth: "100%" }}>
             <CodeAdvent20180701 />
+          </Col>
+        </Row>
+        <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+          <Col sm={3}>
+            <p>FETCH API TEST</p>
+            <a href="https://adventofcode.com/2018/day/6" style={{fontSize: "12px"}}>Go to task</a>
+          </Col>
+          <Col sm={9} style={{ maxWidth: "100%" }}>
+            <FetchAPItest />
+          </Col>
+        </Row>
+        <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+          <Col sm={3}>
+            <p>FETCH API TEST</p>
+            <a href="https://adventofcode.com/2018/day/6" style={{fontSize: "12px"}}>Go to task</a>
+          </Col>
+          <Col sm={9} style={{ maxWidth: "100%" }}>
+            <FetchAPItest2 />
           </Col>
         </Row>
       </Container>

@@ -2,24 +2,22 @@ import React, { useState } from "react";
 import data from "./AdventCodeInputs/CodeAdvent201903.json";
 import "./component.css";
 
-export const CodeAdvent20190301 = () => {
+export const CodeAdvent20190302 = () => {
   const [wires, setWires] = useState(data);
 
   const [result, setResult] = useState();
 
   function handleClick() {
     let wireInfo=processInput(wires);
-    console.log(wireInfo);
-    let overlaping=checkOvelaps(wireInfo);
-    console.log(overlaping);
-    let minDistance=calculateMinDistance(overlaping, wireInfo);
-    setResult (minDistance);
+    let [overlaping, distancesX, distancesY]=checkOvelaps(wireInfo);
+    let minTimes=calculateMinTime(overlaping, distancesX, distancesY, wireInfo);
+    setResult (minTimes);
   }
 
   return (
     <div>
       <p style={{ fontWeight: "bold" }}>Crossed Wires:</p>
-      <p>Minimum Distance: {result} </p>
+      <p>Minimum Time: {result} </p>
       <button style={{ backgroundColor: "#A7A7A9" }}><span onClick={handleClick}>Check Wires</span>
       </button>      
     </div>
@@ -74,10 +72,11 @@ function processInput(input){
 
 function checkOvelaps(inputWireInfo){
  let positionDictionary={};
+ 
   let currentNode=[inputWireInfo.centralPortPositionVertical,inputWireInfo.centralPortPositionHorizontal];
     
 
-
+  let stepsNumber=0;
     for (let wirePosition=0;wirePosition<inputWireInfo.wire1.length;wirePosition++){
 
     if (inputWireInfo.wire1[wirePosition].direction === "R"){
@@ -86,8 +85,16 @@ function checkOvelaps(inputWireInfo){
         let pointY=  currentNode[0];
         let pointX=  currentNode[1]+iteration;
         let jointPosition=JSON.stringify(pointY)+":"+JSON.stringify(pointX);
+        if (!(jointPosition in positionDictionary)){
+          stepsNumber=stepsNumber+1;
 
-        positionDictionary[jointPosition]=1;
+          positionDictionary[jointPosition]={X: stepsNumber};
+
+        } else {
+          stepsNumber=stepsNumber+1;
+        }
+
+        
 
       }
         currentNode[1]=currentNode[1]+inputWireInfo.wire1[wirePosition].movement;
@@ -98,7 +105,14 @@ function checkOvelaps(inputWireInfo){
         let pointX=  currentNode[1]-iteration;
         let jointPosition=JSON.stringify(pointY)+":"+JSON.stringify(pointX);
 
-        positionDictionary[jointPosition]=1;
+        if (!(jointPosition in positionDictionary)){
+          stepsNumber=stepsNumber+1;
+
+          positionDictionary[jointPosition]={X: stepsNumber};
+
+        } else {
+          stepsNumber=stepsNumber+1;
+        }
 
       }
         currentNode[1]=currentNode[1]-inputWireInfo.wire1[wirePosition].movement;
@@ -109,7 +123,14 @@ function checkOvelaps(inputWireInfo){
         let pointX=  currentNode[1];
         let jointPosition=JSON.stringify(pointY)+":"+JSON.stringify(pointX);
 
-        positionDictionary[jointPosition]=1;
+        if (!(jointPosition in positionDictionary)){
+          stepsNumber=stepsNumber+1;
+
+          positionDictionary[jointPosition]={X: stepsNumber};
+
+        } else {
+          stepsNumber=stepsNumber+1;
+        }
 
       }
         currentNode[0]=currentNode[0]-inputWireInfo.wire1[wirePosition].movement;
@@ -120,7 +141,14 @@ function checkOvelaps(inputWireInfo){
         let pointX=  currentNode[1];
         let jointPosition=JSON.stringify(pointY)+":"+JSON.stringify(pointX);
 
-        positionDictionary[jointPosition]=1;
+        if (!(jointPosition in positionDictionary)){
+          stepsNumber=stepsNumber+1;
+
+          positionDictionary[jointPosition]={X: stepsNumber};
+
+        } else {
+          stepsNumber=stepsNumber+1;
+        }
 
       }
         currentNode[0]=currentNode[0]+inputWireInfo.wire1[wirePosition].movement;
@@ -131,7 +159,8 @@ function checkOvelaps(inputWireInfo){
 
 
 currentNode=[inputWireInfo.centralPortPositionVertical,inputWireInfo.centralPortPositionHorizontal];
-
+stepsNumber=0;
+let positionDictionary2={};
 let overlaps={};
 
 for (let wirePosition=0;wirePosition<inputWireInfo.wire2.length;wirePosition++){
@@ -142,7 +171,15 @@ for (let wirePosition=0;wirePosition<inputWireInfo.wire2.length;wirePosition++){
         let pointY=  currentNode[0];
         let pointX=  currentNode[1]+iteration;
         let jointPosition=JSON.stringify(pointY)+":"+JSON.stringify(pointX);
+        
+        if (!(jointPosition in positionDictionary2)){
+          stepsNumber=stepsNumber+1;
 
+          positionDictionary2[jointPosition]={Y: stepsNumber};
+ 
+        } else {
+          stepsNumber=stepsNumber+1;
+        }
         
         if(jointPosition in positionDictionary){
           overlaps[jointPosition]=1;
@@ -157,7 +194,15 @@ for (let wirePosition=0;wirePosition<inputWireInfo.wire2.length;wirePosition++){
         let pointX=  currentNode[1]-iteration;
         let jointPosition=JSON.stringify(pointY)+":"+JSON.stringify(pointX);
 
-        
+        if (!(jointPosition in positionDictionary2)){
+          stepsNumber=stepsNumber+1;
+
+          positionDictionary2[jointPosition]={Y: stepsNumber};
+
+        } else {
+          stepsNumber=stepsNumber+1;
+        }
+
         if(jointPosition in positionDictionary){
           overlaps[jointPosition]=1;
         } 
@@ -170,7 +215,15 @@ for (let wirePosition=0;wirePosition<inputWireInfo.wire2.length;wirePosition++){
         let pointY=  currentNode[0]-iteration;
         let pointX=  currentNode[1];
         let jointPosition=JSON.stringify(pointY)+":"+JSON.stringify(pointX);
+        
+        if (!(jointPosition in positionDictionary2)){
+          stepsNumber=stepsNumber+1;
 
+          positionDictionary2[jointPosition]={Y: stepsNumber};
+
+        } else {
+          stepsNumber=stepsNumber+1;
+        }
         
         if(jointPosition in positionDictionary){
           overlaps[jointPosition]=1;
@@ -184,6 +237,15 @@ for (let wirePosition=0;wirePosition<inputWireInfo.wire2.length;wirePosition++){
         let pointX=  currentNode[1];
         let jointPosition=JSON.stringify(pointY)+":"+JSON.stringify(pointX);
 
+        if (!(jointPosition in positionDictionary2)){
+          stepsNumber=stepsNumber+1;
+
+          positionDictionary2[jointPosition]={Y: stepsNumber};
+
+        } else {
+          stepsNumber=stepsNumber+1;
+        }
+
         if(jointPosition in positionDictionary){
           overlaps[jointPosition]=1;
         } 
@@ -192,26 +254,19 @@ for (let wirePosition=0;wirePosition<inputWireInfo.wire2.length;wirePosition++){
    }
  }
 
-  return overlaps;
+  return [overlaps, positionDictionary, positionDictionary2];
 }
 
-function calculateMinDistance(overlapingInput, wireInfoInput){
-  
-  let minDistance=wireInfoInput.gridHeight+wireInfoInput.gridWidth;
+function calculateMinTime(overlapingInput, distancesXInput, distancesYInput, wireInfoInput){
+  let minTime=wireInfoInput.gridHeight+wireInfoInput.gridWidth;
 
   let overlapsArray=Object.keys(overlapingInput);
-
-
-  for (let i=0;i<overlapsArray.length;i++){
-    
-   let pointY=overlapsArray[i].slice(0,overlapsArray[i].indexOf(":"));
-
-   let pointX=overlapsArray[i].slice(overlapsArray[i].indexOf(":")+1,overlapsArray[i].length);
-
-   let distance=Math.abs(pointY- wireInfoInput.centralPortPositionVertical) + Math.abs(pointX - wireInfoInput.centralPortPositionHorizontal);
-   if (distance<minDistance){
-      minDistance=distance;
+  for (let item=0;item<overlapsArray.length;item++){
+    let totalDistance=distancesXInput[overlapsArray[item]].X+distancesYInput[overlapsArray[item]].Y;
+    if (totalDistance<minTime){
+      minTime=totalDistance;
     }
   }
-  return minDistance;
+
+  return minTime;
 }
