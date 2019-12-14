@@ -3,7 +3,7 @@ import data from "./AdventCodeInputs/CodeAdvent201904.json";
 import "./component.css";
 
 export const CodeAdvent20190402 = () => {
-  const [passwords, setPasswords] = useState([111245,111245]);
+  const [passwords, setPasswords] = useState(data);
   const [result, setResult] = useState();
 
   function handleClick() {
@@ -14,7 +14,7 @@ export const CodeAdvent20190402 = () => {
 
   return (
     <div>
-      <p style={{ fontWeight: "bold" }}>Secure Container (in progress):</p>
+      <p style={{ fontWeight: "bold" }}>Secure Container:</p>
       <p>Valid passwords: {result} </p>
       <button style={{ backgroundColor: "#A7A7A9" }}><span onClick={handleClick}>Analyze passwords</span>
       </button>      
@@ -51,12 +51,25 @@ function analyzePasswords(passwordsArrayInput){
         }
       }
       
+
+
+      let digitDict={0:1, 1:1, 2:1, 3:1, 4:1, 5:1, 6:1, 7:1, 8:1, 9:1};
       for (let char=0;char<5;char++){
         if (parseInt(JSON.stringify(passwordsArrayInput[pass])[char])==parseInt(JSON.stringify(passwordsArrayInput[pass])[char+1])){
-          checkDuplicate=true;
-          break;
+          let digit = JSON.stringify(passwordsArrayInput[pass])[char];
+          digitDict[digit]=digitDict[digit]+1;
+          
         }
       }
+      
+      for (let j=0;j<10;j++){
+       if(digitDict[j]==2){
+       checkDuplicate=true;
+       break;
+       }
+      }
+
+
 
       if(checkIncrease && checkDuplicate){
       validPasswordsArray.push(passwordsArrayInput[pass]);
@@ -65,7 +78,6 @@ function analyzePasswords(passwordsArrayInput){
       }
     }
   }
-
 
   let lenValid=validPasswordsArray.length;
   return lenValid
