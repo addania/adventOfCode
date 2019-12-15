@@ -16,7 +16,7 @@ export const CodeAdvent20190102 = () => {
     <div>
       <p style={{ fontWeight: "bold" }}>Rocket Equation Inception:</p>
       <p>Fuel Requirements: {fuelSum} </p>
-      <button style={{ backgroundColor: "#A7A7A9" }} onClick={handleClick}><span onClick={handleClick}>Run Calculation</span>
+      <button style={{ backgroundColor: "#A7A7A9" }} ><span onClick={handleClick}>Run Calculation</span>
       </button>      
     </div>
   );
