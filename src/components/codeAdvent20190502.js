@@ -3,17 +3,17 @@ import data from "./AdventCodeInputs/CodeAdvent201905.json";
 import "./component.css";
 
 export const CodeAdvent20190502 = () => {
-  const [input, setInput] = useState([3,9,8,9,10,9,4,9,99,-1,8]);
+  const [input, setInput] = useState(data);
   const [result, setResult] = useState();
 
   function handleClick() {
     //let replacedInput=replace(input);
     let calculation= calc2(input);
-    console.log(calculation);
+    //console.log(calculation);
     let numberArray=calculation[0];
     let outputArray=calculation[1];
-    console.log("numberArray", numberArray);
-    console.log("outputArray", outputArray);
+    //console.log("numberArray", numberArray);
+    //console.log("outputArray", outputArray);
     let finalCode=outputArray[outputArray.length-1];
    // console.log("finalCode", finalCode);
     setResult(finalCode);
@@ -43,25 +43,6 @@ if (current.number==99){
  //console.log("condition 99 is triggered");
 x=2;
 break;
-} else if (current.number==3) {
-// console.log("3 is triggered");
-input[input[i+1]]=optCodeInput;
-x=2;
-
-} else if (current.one==4 && current.parameterMode1=="position") {
-//console.log("4 is triggered");
-let givenOutput=input[input[i+1]];
-//console.log("givenOutput", givenOutput)
-optCodeOutputArray.push(givenOutput);
-x=2;
-
-} else if (current.one==4 && current.parameterMode1=="immediate") {
-//console.log("4 is triggered");
-let givenOutput=input[i+1];
-//console.log("givenOutput", givenOutput)
-optCodeOutputArray.push(givenOutput);
-x=2;
-
 } else if(current.one==1 && current.parameterMode1=="position" && current.parameterMode2=="position"){
  //console.log("condition 1 is triggered");
 
@@ -118,6 +99,150 @@ let newValue=input[i+1]*input[input[i+2]];
 input[input[i+3]]=newValue;
 x=4;
 
+} else if (current.number==3) {
+// console.log("3 is triggered");
+input[input[i+1]]=optCodeInput;
+x=2;
+
+} else if (current.one==4 && current.parameterMode1=="position") {
+//console.log("4 is triggered");
+let givenOutput=input[input[i+1]];
+//console.log("givenOutput", givenOutput)
+optCodeOutputArray.push(givenOutput);
+x=2;
+
+} else if (current.one==4 && current.parameterMode1=="immediate") {
+//console.log("4 is triggered");
+let givenOutput=input[i+1];
+//console.log("givenOutput", givenOutput)
+optCodeOutputArray.push(givenOutput);
+x=2;
+
+} else if (current.one==5 && current.parameterMode1=="position" && current.parameterMode2=="position") {
+//console.log("4 is triggered");
+if(input[input[i+1]] != 0){
+x=0;
+i=input[input[i+2]];
+} else {
+x=3  
+}
+
+} else if (current.one==5 && current.parameterMode1=="immediate" && current.parameterMode2=="immediate") {
+//console.log("4 is triggered");
+if(input[i+1] != 0){
+x=0;
+i=input[i+2];
+} else {
+x=3  
+}
+
+} else if (current.one==5 && current.parameterMode1=="position" && current.parameterMode2=="immediate") {
+//console.log("4 is triggered");
+if(input[input[i+1]] != 0){
+x=0;
+i=input[i+2];
+} else {
+x=3  
+}
+
+} else if (current.one==5 && current.parameterMode1=="immediate" && current.parameterMode2=="position") {
+//console.log("4 is triggered");
+if(input[i+1] != 0){
+x=0;
+i=input[input[i+2]];
+} else {
+x=3  
+}
+
+} 
+
+
+
+
+
+
+
+else if (current.one==6 && current.parameterMode1=="position" && current.parameterMode2=="position") {
+//console.log("4 is triggered");
+if(input[input[i+1]] == 0){
+x=0;
+i=input[input[i+2]];
+} else {
+x=3  
+}
+
+} else if (current.one==6 && current.parameterMode1=="immediate" && current.parameterMode2=="immediate") {
+//console.log("4 is triggered");
+if(input[i+1] == 0){
+x=0;
+i=input[i+2];
+} else {
+x=3  
+}
+
+} else if (current.one==6 && current.parameterMode1=="position" && current.parameterMode2=="immediate") {
+//console.log("4 is triggered");
+if(input[input[i+1]] == 0){
+x=0;
+i=input[i+2];
+} else {
+x=3  
+}
+
+} else if (current.one==6 && current.parameterMode1=="immediate" && current.parameterMode2=="position") {
+//console.log("4 is triggered");
+if(input[i+1] == 0){
+x=0;
+i=input[input[i+2]];
+} else {
+x=3  
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+else if(current.one==7 && current.parameterMode1=="position" && current.parameterMode2=="position"){
+ //console.log("condition 2 is triggered");
+if (input[input[i+1]]<input[input[i+2]]){
+  input[input[i+3]]=1;
+} else {
+  input[input[i+3]]=0;
+}
+x=4;
+} else if(current.one==7 && current.parameterMode1=="immediate" && current.parameterMode2=="immediate"){
+ //console.log("condition 2 is triggered");
+if (input[i+1]<input[i+2]){
+  input[input[i+3]]=1;
+} else {
+  input[input[i+3]]=0;
+}
+x=4;
+} else if(current.one==7 && current.parameterMode1=="position" && current.parameterMode2=="immediate"){
+ //console.log("condition 2 is triggered");
+if (input[input[i+1]]<input[i+2]){
+  input[input[i+3]]=1;
+} else {
+  input[input[i+3]]=0;
+}
+x=4;
+} else if(current.one==7 && current.parameterMode1=="immediate" && current.parameterMode2=="position"){
+ //console.log("condition 2 is triggered");
+if (input[i+1]<input[input[i+2]]){
+  input[input[i+3]]=1;
+} else {
+  input[input[i+3]]=0;
+}
+x=4;
 } else if(current.one==8 && current.parameterMode1=="position" && current.parameterMode2=="position"){
  //console.log("condition 2 is triggered");
 if (input[input[i+1]]==input[input[i+2]]){
