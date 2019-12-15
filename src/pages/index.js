@@ -13,6 +13,7 @@ import { CodeAdvent20190402 } from "../components/codeAdvent20190402.js";
 import { CodeAdvent20190501 } from "../components/codeAdvent20190501.js";
 import { CodeAdvent20190502 } from "../components/codeAdvent20190502.js";
 import { CodeAdvent20190601 } from "../components/codeAdvent20190601.js";
+import { CodeAdvent20190602 } from "../components/codeAdvent20190602.js";
 import { CodeAdvent20180101 } from "../components/codeAdvent20180101.js";
 import { CodeAdvent20180102 } from "../components/codeAdvent20180102.js";
 import { CodeAdvent20180201 } from "../components/codeAdvent20180201.js";
@@ -145,6 +146,14 @@ export default() =>
           
           <Col sm={9} style={{ maxWidth: "100%" }}>
             <CodeAdvent20190601 />
+          </Col>
+        </Row>
+        <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+          <Col sm={3} ><p>Task 2019 06 02</p>
+            <a href="https://adventofcode.com/2019/day/6" style={{fontSize: "12px"}}>Go to task</a></Col>
+          
+          <Col sm={9} style={{ maxWidth: "100%" }}>
+            <CodeAdvent20190602 />
           </Col>
         </Row>
         <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
