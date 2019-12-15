@@ -9,13 +9,13 @@ export const CodeAdvent20190502 = () => {
   function handleClick() {
     //let replacedInput=replace(input);
     let calculation= calc2(input);
-   // console.log(calculation);
+    console.log(calculation);
     let numberArray=calculation[0];
     let outputArray=calculation[1];
     console.log("numberArray", numberArray);
     console.log("outputArray", outputArray);
     let finalCode=outputArray[outputArray.length-1];
-    console.log("finalCode", finalCode);
+   // console.log("finalCode", finalCode);
     setResult(finalCode);
   }
 
@@ -31,7 +31,7 @@ export const CodeAdvent20190502 = () => {
 
 
 const calc2 = (input)=> {
-let optCodeInput=8;
+let optCodeInput=5;
 let optCodeOutputArray=[];
 let x=0;
 
