@@ -174,7 +174,7 @@ export const CodeAdvent20190702 = () => {
       <p style={{ fontWeight: "bold" }}>Amplification Circuit:</p>
       <p>Highest amplifier signal: {result} </p>
       <p>Max phase setting: {maxSetting} </p>
-      <button style={{ backgroundColor: "#69747C" }}>
+      <button style={{ backgroundColor: "#A7A7A9" }}>
         <span onClick={handleClick}>Compute signal</span>
       </button>
     </div>

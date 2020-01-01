@@ -2,8 +2,17 @@ import React, { useState } from "react"
 import data from "./AdventCodeInputs/CodeAdvent201910.json"
 import "./component.css"
 
-export const CodeAdvent20191001 = () => {
-  const [asteroidData, setAsteroidData] = useState(data)
+export const CodeAdvent20191002 = () => {
+  //const [asteroidData, setAsteroidData] = useState(data);
+
+  const [asteroidData, setAsteroidData] = useState([
+    ".#....#####...#..",
+    "##...##.#####..##",
+    "##...#...#.#####.",
+    "..#.....#...###..",
+    "..#.#.....#....##",
+  ])
+
   /*const [asteroidData, setAsteroidData] = useState([
     ".#..#",
     ".....",
@@ -131,17 +140,6 @@ const [asteroidData, setAsteroidData] = useState([
           //console.log(equation);
           asteroidArray.push(equation)
         }
-        /*  for (let otherAsteroid=0; otherAsteroid<asteroidPositions.length;otherAsteroid++){
-         if (station !== candidate && candidate !== otherAsteroid && station !== otherAsteroid){
-          console.log ("station", station, "candidate", candidate, "otherAsteroid", otherAsteroid);
-          const equation = getEquation(asteroidPositions[station], asteroidPositions[candidate])
-          const minDistance = checkMinDistance(
-            asteroidPositions[station], asteroidPositions[candidate], asteroidPositions[otherAsteroid]
-          )
-          console.log("minDistance", minDistance);
-    }
-}
-*/
       }
       //console.log("asteroidArray", asteroidArray);
 
@@ -196,7 +194,7 @@ const [asteroidData, setAsteroidData] = useState([
 
       stationsArray.push(stationInfo)
     }
-    ////////console.log("stationsArray", stationsArray)
+    console.log("stationsArray", stationsArray)
     let maxNumSeen = 0
     let maxStation = {}
     stationsArray.forEach(station => {
@@ -217,7 +215,7 @@ const [asteroidData, setAsteroidData] = useState([
       <p style={{ fontWeight: "bold" }}>Monitoring Station:</p>
       <p>Max asteroids detected: {maxAsteroids} </p>
       <p>Station location: {JSON.stringify(stationLocation)} </p>
-      <button style={{ backgroundColor: "#6BAA75" }}>
+      <button style={{ backgroundColor: "#A7A7A9" }}>
         <span onClick={handleClick}>Detect Asteroids</span>
       </button>
     </div>
