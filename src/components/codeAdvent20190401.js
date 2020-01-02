@@ -11,7 +11,6 @@ export const CodeAdvent20190401 = () => {
     let validPasswordsNumber = analyzePasswords(passwordsArray)
     setResult(validPasswordsNumber)
   }
-
   return (
     <div>
       <p style={{ fontWeight: "bold" }}>Secure Container:</p>
@@ -44,21 +43,18 @@ function analyzePasswords(passwordsArrayInput) {
           max = parseInt(JSON.stringify(passwordsArrayInput[pass])[char])
         } else {
           checkIncrease = false
-
           break
         }
       }
-
       for (let char = 0; char < 5; char++) {
         if (
-          parseInt(JSON.stringify(passwordsArrayInput[pass])[char]) ==
+          parseInt(JSON.stringify(passwordsArrayInput[pass])[char]) ===
           parseInt(JSON.stringify(passwordsArrayInput[pass])[char + 1])
         ) {
           checkDuplicate = true
           break
         }
       }
-
       if (checkIncrease && checkDuplicate) {
         validPasswordsArray.push(passwordsArrayInput[pass])
       } else {
@@ -66,7 +62,6 @@ function analyzePasswords(passwordsArrayInput) {
       }
     }
   }
-
   let lenValid = validPasswordsArray.length
   return lenValid
 }

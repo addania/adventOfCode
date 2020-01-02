@@ -7,18 +7,12 @@ export const CodeAdvent20190502 = () => {
   const [result, setResult] = useState()
 
   function handleClick() {
-    //let replacedInput=replace(input);
     let calculation = calc2(input)
-    //console.log(calculation);
     let numberArray = calculation[0]
     let outputArray = calculation[1]
-    //console.log("numberArray", numberArray);
-    //console.log("outputArray", outputArray);
     let finalCode = outputArray[outputArray.length - 1]
-    // console.log("finalCode", finalCode);
     setResult(finalCode)
   }
-
   return (
     <div>
       <p style={{ fontWeight: "bold" }}>Sunny with a Chance of Asteroids:</p>
@@ -36,211 +30,178 @@ const calc2 = input => {
   let x = 0
 
   for (let i = 0; i < input.length; i += x) {
-    //console.log("ii is",i);
     let current = parseInput(input[i])
-
-    if (current.number == 99) {
-      //console.log("condition 99 is triggered");
+    if (current.number === 99) {
       x = 2
       break
     } else if (
-      current.one == 1 &&
-      current.parameterMode1 == "position" &&
-      current.parameterMode2 == "position"
+      current.one === 1 &&
+      current.parameterMode1 === "position" &&
+      current.parameterMode2 === "position"
     ) {
-      //console.log("condition 1 is triggered");
-
       let newValue = input[input[i + 1]] + input[input[i + 2]]
       input[input[i + 3]] = newValue
       x = 4
     } else if (
-      current.one == 1 &&
-      current.parameterMode1 == "immediate" &&
-      current.parameterMode2 == "immediate"
+      current.one === 1 &&
+      current.parameterMode1 === "immediate" &&
+      current.parameterMode2 === "immediate"
     ) {
-      //console.log("condition 1 is triggered");
-
       let newValue = input[i + 1] + input[i + 2]
       input[input[i + 3]] = newValue
       x = 4
     } else if (
-      current.one == 1 &&
-      current.parameterMode1 == "position" &&
-      current.parameterMode2 == "immediate"
+      current.one === 1 &&
+      current.parameterMode1 === "position" &&
+      current.parameterMode2 === "immediate"
     ) {
-      //console.log("condition 1 is triggered");
-
       let newValue = input[input[i + 1]] + input[i + 2]
       input[input[i + 3]] = newValue
       x = 4
     } else if (
-      current.one == 1 &&
-      current.parameterMode1 == "immediate" &&
-      current.parameterMode2 == "position"
+      current.one === 1 &&
+      current.parameterMode1 === "immediate" &&
+      current.parameterMode2 === "position"
     ) {
-      //console.log("condition 1 is triggered");
-
       let newValue = input[i + 1] + input[input[i + 2]]
       input[input[i + 3]] = newValue
       x = 4
     } else if (
-      current.one == 2 &&
-      current.parameterMode1 == "position" &&
-      current.parameterMode2 == "position"
+      current.one === 2 &&
+      current.parameterMode1 === "position" &&
+      current.parameterMode2 === "position"
     ) {
-      //console.log("condition 2 is triggered");
-
       let newValue = input[input[i + 1]] * input[input[i + 2]]
       input[input[i + 3]] = newValue
       x = 4
     } else if (
-      current.one == 2 &&
-      current.parameterMode1 == "immediate" &&
-      current.parameterMode2 == "immediate"
+      current.one === 2 &&
+      current.parameterMode1 === "immediate" &&
+      current.parameterMode2 === "immediate"
     ) {
-      //console.log("condition 2 is triggered");
-
       let newValue = input[i + 1] * input[i + 2]
       input[input[i + 3]] = newValue
       x = 4
     } else if (
-      current.one == 2 &&
-      current.parameterMode1 == "position" &&
-      current.parameterMode2 == "immediate"
+      current.one === 2 &&
+      current.parameterMode1 === "position" &&
+      current.parameterMode2 === "immediate"
     ) {
-      //console.log("condition 2 is triggered");
-
       let newValue = input[input[i + 1]] * input[i + 2]
       input[input[i + 3]] = newValue
       x = 4
     } else if (
-      current.one == 2 &&
-      current.parameterMode1 == "immediate" &&
-      current.parameterMode2 == "position"
+      current.one === 2 &&
+      current.parameterMode1 === "immediate" &&
+      current.parameterMode2 === "position"
     ) {
-      //console.log("condition 2 is triggered");
-
       let newValue = input[i + 1] * input[input[i + 2]]
       input[input[i + 3]] = newValue
       x = 4
-    } else if (current.number == 3) {
-      // console.log("3 is triggered");
+    } else if (current.number === 3) {
       input[input[i + 1]] = optCodeInput
       x = 2
-    } else if (current.one == 4 && current.parameterMode1 == "position") {
-      //console.log("4 is triggered");
+    } else if (current.one === 4 && current.parameterMode1 === "position") {
       let givenOutput = input[input[i + 1]]
-      //console.log("givenOutput", givenOutput)
       optCodeOutputArray.push(givenOutput)
       x = 2
-    } else if (current.one == 4 && current.parameterMode1 == "immediate") {
-      //console.log("4 is triggered");
+    } else if (current.one === 4 && current.parameterMode1 === "immediate") {
       let givenOutput = input[i + 1]
-      //console.log("givenOutput", givenOutput)
       optCodeOutputArray.push(givenOutput)
       x = 2
     } else if (
-      current.one == 5 &&
-      current.parameterMode1 == "position" &&
-      current.parameterMode2 == "position"
+      current.one === 5 &&
+      current.parameterMode1 === "position" &&
+      current.parameterMode2 === "position"
     ) {
-      //console.log("4 is triggered");
-      if (input[input[i + 1]] != 0) {
+      if (input[input[i + 1]] !== 0) {
         x = 0
         i = input[input[i + 2]]
       } else {
         x = 3
       }
     } else if (
-      current.one == 5 &&
-      current.parameterMode1 == "immediate" &&
-      current.parameterMode2 == "immediate"
+      current.one === 5 &&
+      current.parameterMode1 === "immediate" &&
+      current.parameterMode2 === "immediate"
     ) {
-      //console.log("4 is triggered");
-      if (input[i + 1] != 0) {
+      if (input[i + 1] !== 0) {
         x = 0
         i = input[i + 2]
       } else {
         x = 3
       }
     } else if (
-      current.one == 5 &&
-      current.parameterMode1 == "position" &&
-      current.parameterMode2 == "immediate"
+      current.one === 5 &&
+      current.parameterMode1 === "position" &&
+      current.parameterMode2 === "immediate"
     ) {
-      //console.log("4 is triggered");
-      if (input[input[i + 1]] != 0) {
+      if (input[input[i + 1]] !== 0) {
         x = 0
         i = input[i + 2]
       } else {
         x = 3
       }
     } else if (
-      current.one == 5 &&
-      current.parameterMode1 == "immediate" &&
-      current.parameterMode2 == "position"
+      current.one === 5 &&
+      current.parameterMode1 === "immediate" &&
+      current.parameterMode2 === "position"
     ) {
-      //console.log("4 is triggered");
-      if (input[i + 1] != 0) {
+      if (input[i + 1] !== 0) {
         x = 0
         i = input[input[i + 2]]
       } else {
         x = 3
       }
     } else if (
-      current.one == 6 &&
-      current.parameterMode1 == "position" &&
-      current.parameterMode2 == "position"
+      current.one === 6 &&
+      current.parameterMode1 === "position" &&
+      current.parameterMode2 === "position"
     ) {
-      //console.log("4 is triggered");
-      if (input[input[i + 1]] == 0) {
+      if (input[input[i + 1]] === 0) {
         x = 0
         i = input[input[i + 2]]
       } else {
         x = 3
       }
     } else if (
-      current.one == 6 &&
-      current.parameterMode1 == "immediate" &&
-      current.parameterMode2 == "immediate"
+      current.one === 6 &&
+      current.parameterMode1 === "immediate" &&
+      current.parameterMode2 === "immediate"
     ) {
-      //console.log("4 is triggered");
-      if (input[i + 1] == 0) {
+      if (input[i + 1] === 0) {
         x = 0
         i = input[i + 2]
       } else {
         x = 3
       }
     } else if (
-      current.one == 6 &&
-      current.parameterMode1 == "position" &&
-      current.parameterMode2 == "immediate"
+      current.one === 6 &&
+      current.parameterMode1 === "position" &&
+      current.parameterMode2 === "immediate"
     ) {
-      //console.log("4 is triggered");
-      if (input[input[i + 1]] == 0) {
+      if (input[input[i + 1]] === 0) {
         x = 0
         i = input[i + 2]
       } else {
         x = 3
       }
     } else if (
-      current.one == 6 &&
-      current.parameterMode1 == "immediate" &&
-      current.parameterMode2 == "position"
+      current.one === 6 &&
+      current.parameterMode1 === "immediate" &&
+      current.parameterMode2 === "position"
     ) {
-      //console.log("4 is triggered");
-      if (input[i + 1] == 0) {
+      if (input[i + 1] === 0) {
         x = 0
         i = input[input[i + 2]]
       } else {
         x = 3
       }
     } else if (
-      current.one == 7 &&
-      current.parameterMode1 == "position" &&
-      current.parameterMode2 == "position"
+      current.one === 7 &&
+      current.parameterMode1 === "position" &&
+      current.parameterMode2 === "position"
     ) {
-      //console.log("condition 2 is triggered");
       if (input[input[i + 1]] < input[input[i + 2]]) {
         input[input[i + 3]] = 1
       } else {
@@ -248,11 +209,10 @@ const calc2 = input => {
       }
       x = 4
     } else if (
-      current.one == 7 &&
-      current.parameterMode1 == "immediate" &&
-      current.parameterMode2 == "immediate"
+      current.one === 7 &&
+      current.parameterMode1 === "immediate" &&
+      current.parameterMode2 === "immediate"
     ) {
-      //console.log("condition 2 is triggered");
       if (input[i + 1] < input[i + 2]) {
         input[input[i + 3]] = 1
       } else {
@@ -260,11 +220,10 @@ const calc2 = input => {
       }
       x = 4
     } else if (
-      current.one == 7 &&
-      current.parameterMode1 == "position" &&
-      current.parameterMode2 == "immediate"
+      current.one === 7 &&
+      current.parameterMode1 === "position" &&
+      current.parameterMode2 === "immediate"
     ) {
-      //console.log("condition 2 is triggered");
       if (input[input[i + 1]] < input[i + 2]) {
         input[input[i + 3]] = 1
       } else {
@@ -272,11 +231,10 @@ const calc2 = input => {
       }
       x = 4
     } else if (
-      current.one == 7 &&
-      current.parameterMode1 == "immediate" &&
-      current.parameterMode2 == "position"
+      current.one === 7 &&
+      current.parameterMode1 === "immediate" &&
+      current.parameterMode2 === "position"
     ) {
-      //console.log("condition 2 is triggered");
       if (input[i + 1] < input[input[i + 2]]) {
         input[input[i + 3]] = 1
       } else {
@@ -284,59 +242,53 @@ const calc2 = input => {
       }
       x = 4
     } else if (
-      current.one == 8 &&
-      current.parameterMode1 == "position" &&
-      current.parameterMode2 == "position"
+      current.one === 8 &&
+      current.parameterMode1 === "position" &&
+      current.parameterMode2 === "position"
     ) {
-      //console.log("condition 2 is triggered");
-      if (input[input[i + 1]] == input[input[i + 2]]) {
+      if (input[input[i + 1]] === input[input[i + 2]]) {
         input[input[i + 3]] = 1
       } else {
         input[input[i + 3]] = 0
       }
       x = 4
     } else if (
-      current.one == 8 &&
-      current.parameterMode1 == "immediate" &&
-      current.parameterMode2 == "immediate"
+      current.one === 8 &&
+      current.parameterMode1 === "immediate" &&
+      current.parameterMode2 === "immediate"
     ) {
-      //console.log("condition 2 is triggered");
-      if (input[i + 1] == input[i + 2]) {
+      if (input[i + 1] === input[i + 2]) {
         input[input[i + 3]] = 1
       } else {
         input[input[i + 3]] = 0
       }
       x = 4
     } else if (
-      current.one == 8 &&
-      current.parameterMode1 == "position" &&
-      current.parameterMode2 == "immediate"
+      current.one === 8 &&
+      current.parameterMode1 === "position" &&
+      current.parameterMode2 === "immediate"
     ) {
-      //console.log("condition 2 is triggered");
-      if (input[input[i + 1]] == input[i + 2]) {
+      if (input[input[i + 1]] === input[i + 2]) {
         input[input[i + 3]] = 1
       } else {
         input[input[i + 3]] = 0
       }
       x = 4
     } else if (
-      current.one == 8 &&
-      current.parameterMode1 == "immediate" &&
-      current.parameterMode2 == "position"
+      current.one === 8 &&
+      current.parameterMode1 === "immediate" &&
+      current.parameterMode2 === "position"
     ) {
-      //console.log("condition 2 is triggered");
-      if (input[i + 1] == input[input[i + 2]]) {
+      if (input[i + 1] === input[input[i + 2]]) {
         input[input[i + 3]] = 1
       } else {
         input[input[i + 3]] = 0
       }
       x = 4
     } else {
-      //console.log("nothing is triggered");
       break
     }
   }
-  //console.log("optCodeOutputArray", optCodeOutputArray);
   return [input, optCodeOutputArray]
 }
 
@@ -353,20 +305,19 @@ function parseInput(number) {
   parsedObject.ten = ten
   parsedObject.one = one
   parsedObject.number = number
-  if (hundert == 0) {
+  if (hundert === 0) {
     parsedObject.parameterMode1 = "position"
-  } else if (hundert == 1) {
+  } else if (hundert === 1) {
     parsedObject.parameterMode1 = "immediate"
   }
-
-  if (thousand == 0) {
+  if (thousand === 0) {
     parsedObject.parameterMode2 = "position"
-  } else if (thousand == 1) {
+  } else if (thousand === 1) {
     parsedObject.parameterMode2 = "immediate"
   }
-  if (tenThousand == 0) {
+  if (tenThousand === 0) {
     parsedObject.parameterMode3 = "position"
-  } else if (tenThousand == 1) {
+  } else if (tenThousand === 1) {
     parsedObject.parameterMode3 = "immediate"
   }
   return parsedObject
