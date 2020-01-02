@@ -3,47 +3,17 @@ import data from "./AdventCodeInputs/CodeAdvent201909.json"
 import "./component.css"
 
 export const CodeAdvent20190901 = () => {
-  // const [input, setInput] = useState(data)
-
-  //const [input, setInput] = useState([9,9,22202,0,0,7,99,0,0,1])
-
-  //const [input, setInput] = useState([9,7,203,5,99,0,0,1])
-
-  // const [input, setInput] = useState([109,2,204,0,99])
-
-  // const [input, setInput] = useState([109,1,2106,0,8,99,104,80000,99,6])
-
-  const [input, setInput] = useState([
-    109,
-    1,
-    21108,
-    0,
-    0,
-    9,
-    99,
-    104,
-    80000,
-    0,
-    0,
-  ])
-
+  const [input, setInput] = useState(data)
   const [result, setResult] = useState()
 
   function handleClick() {
-    //let replacedInput=replace(input);
-    let calculation = calc2(input)
-    //console.log(calculation);
+    let longInput = increaseMemory(input)
+    let calculation = calc2(longInput)
     let numberArray = calculation[0]
     let outputArray = calculation[1]
-    console.log("numberArray", numberArray)
-    console.log("outputArray", outputArray)
-
-    //console.log("outputArray", outputArray);
     let finalCode = outputArray[outputArray.length - 1]
-    // console.log("finalCode", finalCode);
     setResult(finalCode)
   }
-
   return (
     <div>
       <p style={{ fontWeight: "bold" }}>Sensor Boost:</p>
@@ -62,18 +32,12 @@ const calc2 = input => {
   let optCodeBase = 0
 
   for (let i = 0; i < input.length; i += x) {
-    //console.log("ii is",i);
-    console.log("optCodeBase", optCodeBase)
     let current = parseInput(input[i])
-    console.log("current", current)
-
     /////////// CONDITION 99 ///////////
     if (current.number === 99) {
-      //console.log("condition 99 is triggered");
       x = 2
       break
     }
-
     /////////// CONDITION 1 ///////////
     else if (
       current.one === 1 &&
@@ -81,8 +45,6 @@ const calc2 = input => {
       current.parameterMode2 === "position" &&
       current.parameterMode3 === "position"
     ) {
-      //console.log("condition 1 is triggered");
-
       let newValue = input[input[i + 1]] + input[input[i + 2]]
       input[input[i + 3]] = newValue
       x = 4
@@ -92,8 +54,6 @@ const calc2 = input => {
       current.parameterMode2 == "immediate" &&
       current.parameterMode3 === "position"
     ) {
-      //console.log("condition 1 is triggered");
-
       let newValue = input[i + 1] + input[i + 2]
       input[input[i + 3]] = newValue
       x = 4
@@ -103,8 +63,6 @@ const calc2 = input => {
       current.parameterMode2 == "immediate" &&
       current.parameterMode3 === "position"
     ) {
-      //console.log("condition 1 is triggered");
-
       let newValue = input[input[i + 1]] + input[i + 2]
       input[input[i + 3]] = newValue
       x = 4
@@ -114,8 +72,6 @@ const calc2 = input => {
       current.parameterMode2 == "position" &&
       current.parameterMode3 === "position"
     ) {
-      //console.log("condition 1 is triggered");
-
       let newValue = input[i + 1] + input[input[i + 2]]
       input[input[i + 3]] = newValue
       x = 4
@@ -125,8 +81,6 @@ const calc2 = input => {
       current.parameterMode2 == "position" &&
       current.parameterMode3 === "position"
     ) {
-      //console.log("condition 1 is triggered");
-
       let newValue = input[input[i + 1] + optCodeBase] + input[input[i + 2]]
       input[input[i + 3]] = newValue
       x = 4
@@ -136,8 +90,6 @@ const calc2 = input => {
       current.parameterMode2 == "immediate" &&
       current.parameterMode3 === "position"
     ) {
-      //console.log("condition 1 is triggered");
-
       let newValue = input[input[i + 1] + optCodeBase] + input[i + 2]
       input[input[i + 3]] = newValue
       x = 4
@@ -1277,4 +1229,13 @@ function parseInput(number) {
   }
 
   return parsedObject
+}
+
+const increaseMemory = input => {
+  const input2 = [...input]
+  //console.log("input2", input2)
+  for (let i = 0; i < 1000000; i += 1) {
+    input2.push(0)
+  }
+  return input2
 }
