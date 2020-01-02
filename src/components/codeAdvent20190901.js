@@ -883,7 +883,7 @@ const calc2 = input => {
       current.parameterMode2 === "immediate" &&
       current.parameterMode3 === "position"
     ) {
-      if (input[input[i + 1] + optCodeBase] == input[i + 2]) {
+      if (input[input[i + 1] + optCodeBase] === input[i + 2]) {
         input[input[i + 3]] = 1
       } else {
         input[input[i + 3]] = 0
@@ -952,7 +952,7 @@ const calc2 = input => {
       }
       x = 4
     } else if (
-      current.one == 8 &&
+      current.one === 8 &&
       current.parameterMode1 === "position" &&
       current.parameterMode2 === "immediate" &&
       current.parameterMode3 === "relative"

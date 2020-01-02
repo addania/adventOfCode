@@ -54,8 +54,8 @@ function computeLayerInfo(
   for (let position = 0; position < layersArray[0].length; position++) {
     for (let layer = 0; layer < layersArray.length; layer++) {
       if (
-        layersArray[layer][position] == 1 ||
-        layersArray[layer][position] == 0
+        layersArray[layer][position] === 1 ||
+        layersArray[layer][position] === 0
       ) {
         finalArray.push(layersArray[layer][position])
         break
