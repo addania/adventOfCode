@@ -39,9 +39,9 @@ function processInput(input) {
     let movement1 = parseInt(wire1[i].slice(1))
     let dict1 = { direction: direction1, movement: movement1 }
     wireInfo1.push(dict1)
-    if (direction1 == "R" || direction1 == "L") {
+    if (direction1 === "R" || direction1 === "L") {
       sumRL1 = sumRL1 + movement1
-    } else if (direction1 == "U" || direction1 == "D") {
+    } else if (direction1 === "U" || direction1 === "D") {
       sumUD1 = sumUD1 + movement1
     }
   }
@@ -51,9 +51,9 @@ function processInput(input) {
     let movement2 = parseInt(wire2[i].slice(1))
     let dict2 = { direction: direction2, movement: movement2 }
     wireInfo2.push(dict2)
-    if (direction2 == "R" || direction2 == "L") {
+    if (direction2 === "R" || direction2 === "L") {
       sumRL2 = sumRL2 + movement2
-    } else if (direction2 == "U" || direction2 == "D") {
+    } else if (direction2 === "U" || direction2 === "D") {
       sumUD2 = sumUD2 + movement2
     }
   }
