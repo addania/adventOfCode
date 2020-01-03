@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import data from "./AdventCodeInputs/CodeAdvent201909.json"
+import data from "./AdventCodeInputs/CodeAdvent201911.json"
 import "./component.css"
 
-export const CodeAdvent20190902 = () => {
+export const CodeAdvent20191102 = () => {
   const [input, setInput] = useState(data)
   const [result, setResult] = useState()
   function handleClick() {
@@ -11,27 +11,98 @@ export const CodeAdvent20190902 = () => {
     let numberArray = calculation[0]
     let outputArray = calculation[1]
     let finalCode = outputArray[outputArray.length - 1]
-    setResult(finalCode)
+    let countOfPainted = calculation[2]
+    const joinedRows = joinRow(calculation[3])
+    const joinedString = joinString(joinedRows)
+    console.log("joinedString", joinedString)
+    const hi = download(joinedString, "registrationNumber.txt", "text/plain")
+    setResult("ABEKZGFG")
   }
   return (
     <div>
-      <p style={{ fontWeight: "bold" }}>Sensor Boost:</p>
-      <p>Coordintes of distress signal: {result} </p>
-      <button style={{ backgroundColor: "#68C1B4" }}>
-        <span onClick={handleClick}>Get Keycode</span>
+      <p style={{ fontWeight: "bold" }}>Space Police:</p>
+      <p>Registration identifier: {result} </p>
+      <button style={{ backgroundColor: "#27A7C6" }}>
+        <span onClick={handleClick}>Download ID</span>
       </button>
     </div>
   )
 }
 
 const calc2 = input => {
-  let optCodeInput = 2
+  let optCodeInput = 1
   let optCodeOutputArray = []
   let x = 0
   let optCodeBase = 0
-
+  let colours = generateField(".")
+  let frequency = generateField(0)
+  let currentX = 0
+  let currentY = 20
+  let previousX
+  let previousY
+  let pointer = "^"
+  colours[currentY][currentX] = "#"
   for (let i = 0; i < input.length; i += x) {
     let current = parseInput(input[i])
+    if (optCodeOutputArray.length === 2) {
+      if (optCodeOutputArray[0] === 1) {
+        colours[currentY][currentX] = "#"
+        frequency[currentY][currentX] = frequency[currentY][currentX] + 1
+      } else if (optCodeOutputArray[0] === 0) {
+        colours[currentY][currentX] = "."
+        frequency[currentY][currentX] = frequency[currentY][currentX] + 1
+      }
+      if (pointer === "^" && optCodeOutputArray[1] === 0) {
+        pointer = "<"
+        previousX = currentX
+        previousY = currentY
+        currentX = currentX - 1
+      } else if (pointer === "<" && optCodeOutputArray[1] === 0) {
+        pointer = "v"
+        previousX = currentX
+        previousY = currentY
+        currentY = currentY + 1
+      } else if (pointer === "v" && optCodeOutputArray[1] === 0) {
+        pointer = ">"
+        previousX = currentX
+        previousY = currentY
+        currentX = currentX + 1
+      } else if (pointer === ">" && optCodeOutputArray[1] === 0) {
+        pointer = "^"
+        previousX = currentX
+        previousY = currentY
+        currentY = currentY - 1
+      }
+
+      if (pointer === "^" && optCodeOutputArray[1] === 1) {
+        pointer = ">"
+        previousX = currentX
+        previousY = currentY
+        currentX = currentX + 1
+      } else if (pointer === ">" && optCodeOutputArray[1] === 1) {
+        pointer = "v"
+        previousX = currentX
+        previousY = currentY
+        currentY = currentY + 1
+      } else if (pointer === "v" && optCodeOutputArray[1] === 1) {
+        pointer = "<"
+        previousX = currentX
+        previousY = currentY
+        currentX = currentX - 1
+      } else if (pointer === "<" && optCodeOutputArray[1] === 1) {
+        pointer = "^"
+        previousX = currentX
+        previousY = currentY
+        currentY = currentY - 1
+      }
+      optCodeOutputArray = []
+    }
+    if (colours[currentY][currentX] === ".") {
+      optCodeInput = 0
+    } else if (colours[currentY][currentX] === "#") {
+      optCodeInput = 1
+    }
+
     /////////// CONDITION 99 ///////////
     if (current.number === 99) {
       x = 2
@@ -1051,7 +1122,9 @@ const calc2 = input => {
       break
     }
   }
-  return [input, optCodeOutputArray]
+  console.log("colours", colours)
+  const count = countPaintedTiles(frequency)
+  return [input, optCodeOutputArray, count, colours]
 }
 
 function parseInput(number) {
@@ -1097,4 +1170,61 @@ const increaseMemory = input => {
     input2.push(0)
   }
   return input2
+}
+
+const generateField = item => {
+  const array = []
+
+  for (let i = 0; i <= 50; i++) {
+    let row = []
+    for (let j = 0; j <= 50; j++) {
+      row.push(item)
+    }
+    array.push(row)
+  }
+  return array
+}
+
+const countPaintedTiles = input => {
+  let number = 0
+
+  for (let i = 0; i <= 50; i++) {
+    for (let j = 0; j <= 50; j++) {
+      if (input[i][j] !== 0) {
+        number = number + 1
+      }
+    }
+  }
+  return number
+}
+
+function download(data, filename, type) {
+  var file = new Blob([data], { type: type })
+  if (window.navigator.msSaveOrOpenBlob)
+    // IE10+
+    window.navigator.msSaveOrOpenBlob(file, filename)
+  else {
+    // Others
+    var a = document.createElement("a"),
+      url = URL.createObjectURL(file)
+    a.href = url
+    a.download = filename
+    document.body.appendChild(a)
+    a.click()
+    setTimeout(function() {
+      document.body.removeChild(a)
+      window.URL.revokeObjectURL(url)
+    }, 0)
+  }
+}
+
+function joinRow(input) {
+  const newInput = input.map(item => {
+    return item.join("")
+  })
+  return newInput
+}
+
+function joinString(input) {
+  return input.join("\n")
 }

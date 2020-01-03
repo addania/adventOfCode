@@ -106,7 +106,7 @@ export const CodeAdvent20190701 = () => {
           " > " +
           maxSetting.am5}{" "}
       </p>
-      <button style={{ backgroundColor: "#6BAA75" }}>
+      <button style={{ backgroundColor: "#27A7C6" }}>
         <span onClick={handleClick}>Compute signal</span>
       </button>
     </div>

@@ -22,7 +22,7 @@ export const CodeAdvent20190801 = () => {
     <div>
       <p style={{ fontWeight: "bold" }}>Space Image Formats:</p>
       <p>Selected Layer: {result} </p>
-      <button style={{ backgroundColor: "#69747C" }}>
+      <button style={{ backgroundColor: "#68C1B4" }}>
         <span onClick={handleClick}>Detect Layer</span>
       </button>
     </div>

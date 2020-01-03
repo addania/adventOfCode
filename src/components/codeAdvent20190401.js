@@ -15,7 +15,7 @@ export const CodeAdvent20190401 = () => {
     <div>
       <p style={{ fontWeight: "bold" }}>Secure Container:</p>
       <p>Valid passwords: {result} </p>
-      <button style={{ backgroundColor: "#6BAA75" }}>
+      <button style={{ backgroundColor: "#27A7C6" }}>
         <span onClick={handleClick}>Analyze passwords</span>
       </button>
     </div>

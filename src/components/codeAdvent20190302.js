@@ -22,7 +22,7 @@ export const CodeAdvent20190302 = () => {
     <div>
       <p style={{ fontWeight: "bold" }}>Crossed Wires:</p>
       <p>Minimum Time: {result} </p>
-      <button style={{ backgroundColor: "#69747C" }}>
+      <button style={{ backgroundColor: "#68C1B4" }}>
         <span onClick={handleClick}>Check Wires</span>
       </button>
     </div>

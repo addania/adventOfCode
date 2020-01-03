@@ -15,7 +15,7 @@ export const CodeAdvent20190602 = () => {
     <div>
       <p style={{ fontWeight: "bold" }}>Universal Orbit Map:</p>
       <p>Number of orbits: {result} </p>
-      <button style={{ backgroundColor: "#69747C" }}>
+      <button style={{ backgroundColor: "#68C1B4" }}>
         <span onClick={handleClick}>Calculate orbits</span>
       </button>
     </div>

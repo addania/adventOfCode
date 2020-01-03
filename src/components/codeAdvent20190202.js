@@ -14,7 +14,7 @@ export const CodeAdvent20190202 = () => {
     <div>
       <p style={{ fontWeight: "bold" }}>Program Alarm:</p>
       <p> Program halts at position: {result} </p>
-      <button style={{ backgroundColor: "#6BAA75" }}>
+      <button style={{ backgroundColor: "#27A7C6" }}>
         <span onClick={handleClick}>Get Position</span>
       </button>
     </div>

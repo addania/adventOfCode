@@ -217,7 +217,7 @@ const [asteroidData, setAsteroidData] = useState([
       <p style={{ fontWeight: "bold" }}>Monitoring Station:</p>
       <p>Max asteroids detected: {maxAsteroids} </p>
       <p>Station location: {JSON.stringify(stationLocation)} </p>
-      <button style={{ backgroundColor: "#6BAA75" }}>
+      <button style={{ backgroundColor: "#27A7C6" }}>
         <span onClick={handleClick}>Detect Asteroids</span>
       </button>
     </div>
