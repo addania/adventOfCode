@@ -3,19 +3,15 @@ import data from "./AdventCodeInputs/CodeAdvent201911.json"
 import "./component.css"
 
 export const CodeAdvent20191102 = () => {
-  const [input, setInput] = useState(data)
+  const input = data
   const [result, setResult] = useState()
   function handleClick() {
     let longInput = increaseMemory(input)
     let calculation = calc2(longInput)
-    let numberArray = calculation[0]
-    let outputArray = calculation[1]
-    let finalCode = outputArray[outputArray.length - 1]
-    let countOfPainted = calculation[2]
     const joinedRows = joinRow(calculation[3])
     const joinedString = joinString(joinedRows)
     console.log("joinedString", joinedString)
-    const hi = download(joinedString, "registrationNumber.txt", "text/plain")
+    download(joinedString, "registrationNumber.txt", "text/plain")
     setResult("ABEKZGFG")
   }
   return (
@@ -38,8 +34,6 @@ const calc2 = input => {
   let frequency = generateField(0)
   let currentX = 0
   let currentY = 20
-  let previousX
-  let previousY
   let pointer = "^"
   colours[currentY][currentX] = "#"
   for (let i = 0; i < input.length; i += x) {
@@ -54,45 +48,29 @@ const calc2 = input => {
       }
       if (pointer === "^" && optCodeOutputArray[1] === 0) {
         pointer = "<"
-        previousX = currentX
-        previousY = currentY
         currentX = currentX - 1
       } else if (pointer === "<" && optCodeOutputArray[1] === 0) {
         pointer = "v"
-        previousX = currentX
-        previousY = currentY
         currentY = currentY + 1
       } else if (pointer === "v" && optCodeOutputArray[1] === 0) {
         pointer = ">"
-        previousX = currentX
-        previousY = currentY
         currentX = currentX + 1
       } else if (pointer === ">" && optCodeOutputArray[1] === 0) {
         pointer = "^"
-        previousX = currentX
-        previousY = currentY
         currentY = currentY - 1
       }
 
       if (pointer === "^" && optCodeOutputArray[1] === 1) {
         pointer = ">"
-        previousX = currentX
-        previousY = currentY
         currentX = currentX + 1
       } else if (pointer === ">" && optCodeOutputArray[1] === 1) {
         pointer = "v"
-        previousX = currentX
-        previousY = currentY
         currentY = currentY + 1
       } else if (pointer === "v" && optCodeOutputArray[1] === 1) {
         pointer = "<"
-        previousX = currentX
-        previousY = currentY
         currentX = currentX - 1
       } else if (pointer === "<" && optCodeOutputArray[1] === 1) {
         pointer = "^"
-        previousX = currentX
-        previousY = currentY
         currentY = currentY - 1
       }
       optCodeOutputArray = []
@@ -1122,7 +1100,6 @@ const calc2 = input => {
       break
     }
   }
-  console.log("colours", colours)
   const count = countPaintedTiles(frequency)
   return [input, optCodeOutputArray, count, colours]
 }

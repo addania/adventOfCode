@@ -4,145 +4,7 @@ import "./component.css"
 import _ from "lodash"
 
 export const CodeAdvent20191002 = () => {
-  const [asteroidData, setAsteroidData] = useState(data)
-
-  /*const [asteroidData, setAsteroidData] = useState([
-    ".#....#####...#..",
-    "##...##.#####..##",
-    "##...#...#.#####.",
-    "..#.....#...###..",
-    "..#.#.....#....##",
-  ])
-*/
-  /*
-const [asteroidData, setAsteroidData] = useState([
-".#..##.###...#######",
-"##.############..##.",
-".#.######.########.#",
-".###.#######.####.#.",
-"#####.##.#.##.###.##",
-"..#####..#.#########",
-"####################",
-"#.####....###.#.#.##",
-"##.#################",
-"#####.##.###..####..",
-"..######..##.#######",
-"####.##.####...##..#",
-".#####..#.######.###",
-"##...#.##########...",
-"#.##########.#######",
-".####.#.###.###.#.##",
-"....##.##.###..#####",
-".#.#.###########.###",
-"#.#.#.#####.####.###",
-"###.##.####.##.#..##"
-])
-*/
-  /*const [asteroidData, setAsteroidData] = useState([
-    ".#..#",
-    ".....",
-    "#####",
-    "....#",
-    "...##",
-  ])
-
-  */
-  /*const [asteroidData, setAsteroidData] = useState([
-    ".###.",
-  ])
-*/
-  /*
-  const [asteroidData, setAsteroidData] = useState([
-    ".#...",
-    ".#...",
-    ".#...",
-  ])
-*/
-  //const [asteroidData, setAsteroidData] = useState([".#.#.", "..#..", ".#.#."])
-  /*
-  const [asteroidData, setAsteroidData] = useState([
-    "#...#",
-    ".#...",
-    "..#..",
-    "...#.",
-    "....#",
-  ])
-*/
-  /*
-const [asteroidData, setAsteroidData] = useState([
-".#..#",
-".....",
-"#####",
-"....#",
-"...##"
-  ])
-*/
-  /*
-const [asteroidData, setAsteroidData] = useState([
-"......#.#.",
-"#..#.#....",
-"..#######.",
-".#.#.###..",
-".#..#.....",
-"..#....#.#",
-"#..#....#.",
-".##.#..###",
-"##...#..#.",
-".#....####"
-  ])
-*/
-  /* 
-const [asteroidData, setAsteroidData] = useState([
-"#.#...#.#.",
-".###....#.",
-".#....#...",
-"##.#.#.#.#",
-"....#.#.#.",
-".##..###.#",
-"..#...##..",
-"..##....##",
-"......#...",
-".####.###."
-  ])
-*/
-  /*
-const [asteroidData, setAsteroidData] = useState([
-".#..#..###",
-"####.###.#",
-"....###.#.",
-"..###.##.#",
-"##.##.#.#.",
-"....###..#",
-"..#.#..#.#",
-"#..#.#.###",
-".##...##.#",
-".....#.#.."
- ])
-*/
-  /*
-const [asteroidData, setAsteroidData] = useState([
-".#..##.###...#######",
-"##.############..##.",
-".#.######.########.#",
-".###.#######.####.#.",
-"#####.##.#.##.###.##",
-"..#####..#.#########",
-"####################",
-"#.####....###.#.#.##",
-"##.#################",
-"#####.##.###..####..",
-"..######..##.#######",
-"####.##.####...##..#",
-".#####..#.######.###",
-"##...#.##########...",
-"#.##########.#######",
-".####.#.###.###.#.##",
-"....##.##.###..#####",
-".#.#.###########.###",
-"#.#.#.#####.####.###",
-"###.##.####.##.#..##"
- ])
-*/
+  const asteroidData = data
   const [maxAsteroids, setMaxAsteroids] = useState()
   const [stationLocation, setStationLocation] = useState()
   const [asteroidsCount, setAsteroidsCount] = useState()
@@ -153,7 +15,6 @@ const [asteroidData, setAsteroidData] = useState([
       .map((row, i) => getXCoordinates(row, i))
       .flat()
     const stationsArray = []
-    //console.log("asteroidPositions", asteroidPositions);
     for (let station = 0; station < asteroidPositions.length; station++) {
       const asteroidArray = []
       for (
@@ -166,18 +27,12 @@ const [asteroidData, setAsteroidData] = useState([
             asteroidPositions[station],
             asteroidPositions[candidate]
           )
-          //console.log(equation);
           asteroidArray.push(equation)
         }
       }
-      //console.log("asteroidArray", asteroidArray);
-
-      //console.log("stationInfo", stationInfo);
-
       const uniqueEquasions = [
         ...new Set(asteroidArray.map(item => item.eqRC1)),
       ]
-      // console.log("uniqueEquasions", uniqueEquasions);
 
       const seenAsteroids = []
       uniqueEquasions.forEach(item => {
@@ -189,33 +44,18 @@ const [asteroidData, setAsteroidData] = useState([
             minAsteroid = astr.asteroid
           }
         })
-        //  console.log("minDistance", minDistance);
-        // console.log("minAsteroid", minAsteroid);
-
         seenAsteroids.push(minAsteroid)
       })
-      // console.log("station", asteroidPositions[station]);
-      //console.log("seenAsteroids",seenAsteroids);
       const finalAsteroidArray = asteroidArray.map(item => {
         seenAsteroids.forEach(seen => {
           if (item.asteroid.x === seen.x && item.asteroid.y === seen.y) {
-            // console.log("true is triggered");
             item.isSeen = true
           } else {
-            //  console.log("false is triggered");
           }
         })
 
         return item
       })
-      //console.log("finalAsteroidArray", finalAsteroidArray)
-
-      /*uniqueEquasions.forEach(item => {
-        if(asteroidArray.asteroid===minAsteroid){
-          asteroidArray
-        }
-      })*/
-
       const stationInfo = {}
       stationInfo.station = asteroidPositions[station]
       stationInfo.asteroids = finalAsteroidArray
@@ -223,7 +63,6 @@ const [asteroidData, setAsteroidData] = useState([
 
       stationsArray.push(stationInfo)
     }
-    // console.log("stationsArray", stationsArray)
     let maxNumSeen = 0
     let maxStation = {}
     let astroidsMap = []
@@ -234,69 +73,54 @@ const [asteroidData, setAsteroidData] = useState([
         astroidsMap = station.asteroids
       }
     })
-
-    //console.log("maxNumSeen", maxNumSeen)
-    //console.log("maxStation", maxStation)
-    //console.log("astroidsMap", astroidsMap)
     setMaxAsteroids(maxNumSeen)
     setStationLocation(maxStation)
 
     const groupedAsteroidsMap = groupAsteroids(astroidsMap, maxStation)
-    //console.log("groupedAsteroidsMap", groupedAsteroidsMap)
     const asteroidGroups = _.groupBy(groupedAsteroidsMap, "group")
-    // console.log("asteroidGroups", asteroidGroups)
 
     const verticalTop = _.orderBy(
       asteroidGroups.verticalTop,
       ["distance"],
       ["asc"]
     )
-    //console.log("verticalTop", verticalTop)
     const topRightQuarter = _.orderBy(
       asteroidGroups.topRightQuarter,
       ["eqRC1"],
       ["desc"]
     )
-    //console.log("topRightQuarter", topRightQuarter)
     const horizontalRight = _.orderBy(
       asteroidGroups.horizontalRight,
       ["distance"],
       ["asc"]
     )
-    //console.log("horizontalRight", horizontalRight)
     const bottomRightQuarter = _.orderBy(
       asteroidGroups.bottomRightQuarter,
       ["eqRC1"],
       ["desc"]
     )
-    // console.log("bottomRightQuarter", bottomRightQuarter)
     const verticalBottom = _.orderBy(
       asteroidGroups.verticalBottom,
       ["distance"],
       ["asc"]
     )
-    // console.log("verticalBottom", verticalBottom)
     const topLeftQuarter = _.orderBy(
       asteroidGroups.topLeftQuarter,
       ["eqRC1"],
       ["desc"]
     )
-    // console.log("topLeftQuarter", topLeftQuarter)
     const horizontalLeft = _.orderBy(
       asteroidGroups.horizontalLeft,
       ["distance"],
       ["asc"]
     )
-    // console.log("horizontalLeft", horizontalLeft)
     const bottomLeftQuarter = _.orderBy(
       asteroidGroups.bottomLeftQuarter,
       ["eqRC1"],
       ["desc"]
     )
-    // console.log("bottomLeftQuarter", bottomLeftQuarter)
     let count = 0
     let winnerAsteroid = {}
-    //console.log("groupedAsteroidsMap", groupedAsteroidsMap)
     const result = vaporize(
       verticalTop,
       topRightQuarter,
@@ -311,10 +135,6 @@ const [asteroidData, setAsteroidData] = useState([
       winnerAsteroid,
       groupAsteroids
     )
-    //console.log("count", count)
-    //console.log("winnerAsteroid", winnerAsteroid)
-    //console.log("return from fucntion", result)
-
     setAsteroidsCount(result[0])
     setWinnerAsteroid(result[1])
     setPositionCalculation(result[1].x * 100 + result[1].y)
@@ -345,22 +165,15 @@ const getXCoordinates = (input, yCoordinates) => {
 }
 
 const getEquation = (pointA, pointB) => {
-  // A: {x:1, y:2} a1, a2
-  // B: {x:3, y:4} b1, b2
   const equationLeftConstant = pointA.y
   const equationRightConstant1 = (pointA.x - pointB.x) / (pointA.y - pointB.y)
   const equationRightConstant2 = pointA.x
   const dist = calculateDistance(pointA, pointB)
   if (pointA.y === pointB.y) {
     return {
-      //  eqY: undefined,
-      //  eqLC: equationLeftConstant,
-      // station: pointA,
       asteroid: pointB,
       eqRC1: equationRightConstant1,
       distance: dist,
-      //  eqX: undefined,
-      //  eqRC2: equationRightConstant2,
       isHorizontal: true,
       isVertical: false,
       isSeen: false,
@@ -369,14 +182,9 @@ const getEquation = (pointA, pointB) => {
     }
   } else if (pointA.x === pointB.x && pointB.y < pointA.y) {
     return {
-      //  eqY: undefined,
-      //  eqLC: equationLeftConstant,
-      //     station: pointA,
       asteroid: pointB,
       eqRC1: "-0",
       distance: dist,
-      //  eqX: undefined,
-      //  eqRC2: equationRightConstant2,
       isHorizontal: false,
       isVertical: true,
       isSeen: false,
@@ -385,14 +193,9 @@ const getEquation = (pointA, pointB) => {
     }
   } else if (pointA.x === pointB.x && pointB.y > pointA.y) {
     return {
-      //  eqY: undefined,
-      //  eqLC: equationLeftConstant,
-      //     station: pointA,
       asteroid: pointB,
       eqRC1: "0",
       distance: dist,
-      //  eqX: undefined,
-      //  eqRC2: equationRightConstant2,
       isHorizontal: false,
       isVertical: true,
       isSeen: false,
@@ -401,14 +204,9 @@ const getEquation = (pointA, pointB) => {
     }
   } else if (pointB.y < pointA.y) {
     return {
-      //  eqY: undefined,
-      //  eqLC: equationLeftConstant,
-      //     station: pointA,
       asteroid: pointB,
       eqRC1: 1000000000 * equationRightConstant1,
       distance: dist,
-      //  eqX: undefined,
-      //  eqRC2: equationRightConstant2,
       isHorizontal: false,
       isVertical: false,
       isSeen: false,
@@ -417,14 +215,9 @@ const getEquation = (pointA, pointB) => {
     }
   } else if (pointB.y > pointA.y) {
     return {
-      //  eqY: undefined,
-      //  eqLC: equationLeftConstant,
-      //     station: pointA,
       asteroid: pointB,
       eqRC1: equationRightConstant1,
       distance: dist,
-      //  eqX: undefined,
-      //  eqRC2: equationRightConstant2,
       isHorizontal: false,
       isVertical: false,
       isSeen: false,
@@ -437,13 +230,10 @@ const getEquation = (pointA, pointB) => {
 const checkIfOnSameLine = (pointA, pointB, pointC) => {
   const equation = getEquation(pointA, pointB)
   if (equation.isHorizontal) {
-    //console.log("horizontal")
     return pointC.y === equation.eqLC
   } else if (equation.isVertical) {
-    //console.log("veertical")
     return pointC.x === equation.eqRC2
   } else {
-    //console.log("other")
     return (
       pointC.y - equation.eqLC === equation.eqRC1 * (pointC.x - equation.eqRC2)
     )
@@ -463,16 +253,13 @@ const checkMinDistance = (pointA, pointB, pointC) => {
   const checkPoint = checkIfOnSameLine(pointA, pointB, pointC)
   if (checkPoint) {
     const distanceAB = calculateDistance(pointA, pointB)
-    //console.log("distanceAB", distanceAB)
     const distanceAC = calculateDistance(pointA, pointC)
-    //console.log("distanceAC", distanceAC)
     if (distanceAB < distanceAC) {
       min = pointB
     } else {
       min = pointC
     }
   }
-  // console.log("min", min);
   return min
 }
 
@@ -517,7 +304,6 @@ const groupAsteroids = (input, station) => {
     }
     return item
   })
-
   return newInput
 }
 
@@ -551,8 +337,6 @@ const vaporize = (
       }
     })
     const newVerticalTop = checkIfSeen(verticalTop, asteroidData)
-    //console.log("newVerticalTop", newVerticalTop)
-
     topRightQuarter.forEach(item => {
       if (item.isSeen && !item.isVaporized) {
         count = count + 1
@@ -566,8 +350,6 @@ const vaporize = (
       }
     })
     const newTopRightQuarter = checkIfSeen(topRightQuarter, asteroidData)
-    //console.log("newTopRightQuarter", newTopRightQuarter)
-
     horizontalRight.forEach(item => {
       if (item.isSeen && !item.isVaporized) {
         count = count + 1
@@ -581,8 +363,6 @@ const vaporize = (
       }
     })
     const newHorizontalRight = checkIfSeen(horizontalRight, asteroidData)
-    //console.log("newHorizontalRight", newHorizontalRight);
-
     bottomRightQuarter.forEach(item => {
       if (item.isSeen && !item.isVaporized) {
         count = count + 1
@@ -596,8 +376,6 @@ const vaporize = (
       }
     })
     const newBottomRightQuarter = checkIfSeen(bottomRightQuarter, asteroidData)
-    //console.log("newBottomRightQuarter", newBottomRightQuarter);
-
     verticalBottom.forEach(item => {
       if (item.isSeen && !item.isVaporized) {
         count = count + 1
@@ -611,8 +389,6 @@ const vaporize = (
       }
     })
     const newVerticalBottom = checkIfSeen(verticalBottom, asteroidData)
-    //console.log("newVerticalBottom", newVerticalBottom);
-
     bottomLeftQuarter.forEach(item => {
       if (item.isSeen && !item.isVaporized) {
         count = count + 1
@@ -626,8 +402,6 @@ const vaporize = (
       }
     })
     const newBottomLeftQuarter = checkIfSeen(bottomLeftQuarter, asteroidData)
-    //console.log("newBottomLeftQuarter", newBottomLeftQuarter);
-
     horizontalLeft.forEach(item => {
       if (item.isSeen && !item.isVaporized) {
         count = count + 1
@@ -641,8 +415,6 @@ const vaporize = (
       }
     })
     const newHorizontalLeft = checkIfSeen(horizontalLeft, asteroidData)
-    //console.log("newHorizontalLeft", newHorizontalLeft);
-
     topLeftQuarter.forEach(item => {
       if (item.isSeen && !item.isVaporized) {
         count = count + 1
@@ -656,8 +428,6 @@ const vaporize = (
       }
     })
     const newTopLeftQuarter = checkIfSeen(topLeftQuarter, asteroidData)
-    //console.log("newTopLeftQuarter", newTopLeftQuarter);
-    //console.log("count in the function", count);
 
     vaporize(
       newVerticalTop,
@@ -680,8 +450,6 @@ const vaporize = (
 
 const checkIfSeen = (asteroids, asteroidData) => {
   const uniqueEquasions = [...new Set(asteroids.map(item => item.eqRC1))]
-  //console.log("uniqueEquasions", uniqueEquasions);
-
   const seenAsteroids = []
   uniqueEquasions.forEach(item => {
     let minDistance = asteroidData.length * asteroidData[0].length
@@ -697,27 +465,19 @@ const checkIfSeen = (asteroids, asteroidData) => {
         minAsteroid = astr.asteroid
       }
     })
-    //  console.log("minDistance", minDistance);
-    // console.log("minAsteroid", minAsteroid);
-
     seenAsteroids.push(minAsteroid)
   })
-  // console.log("station", asteroidPositions[station]);
-  //console.log("seenAsteroids",seenAsteroids);
 
   const finalAsteroidArray = asteroids.map(item => {
     seenAsteroids.forEach(seen => {
       if (item.asteroid.x === seen.x && item.asteroid.y === seen.y) {
-        // console.log("true is triggered");
         item.isSeen = true
       } else {
-        //  console.log("false is triggered");
       }
     })
 
     return item
   })
-  // console.log("finalAsteroidArray", finalAsteroidArray)
 
   return finalAsteroidArray
 }
