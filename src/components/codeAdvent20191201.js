@@ -3,10 +3,16 @@ import data from "./AdventCodeInputs/CodeAdvent201912.json"
 import "./component.css"
 
 export const CodeAdvent20191201 = () => {
-  const input = data
+  //const input = data
+  const input = [
+    "<x=-1, y=0, z=2>",
+    "<x=2, y=-10, z=-7>",
+    "<x=4, y=-8, z=8>",
+    "<x=3, y=5, z=-1>",
+  ]
   const [result, setResult] = useState()
   function handleClick() {
-    const parsedInput = parseInput(data)
+    const parsedInput = parseInput(input)
     console.log(parsedInput)
     const updatedVelocities = computeAllVelocities(parsedInput)
     setResult("0")
@@ -81,18 +87,16 @@ const calculateVelocity = (moon1, moon2) => {
 
 const computeAllVelocities = input => {
   for (let i = 0; i < input.length; i++) {
-    for (let j = 0; j < input.length; j++) {
-      if (i !== j) {
-        const newVelocity = calculateVelocity(input[i], input[j])
-        input[i].velX = input[i].velX + newVelocity[0]
-        input[i].velY = input[i].velY + newVelocity[2]
-        input[i].velZ = input[i].velZ + newVelocity[4]
-        input[j].velX = input[j].velX + newVelocity[1]
-        input[j].velY = input[j].velY + newVelocity[3]
-        input[j].velZ = input[j].velZ + newVelocity[5]
+    for (let j = i + 1; j < input.length; j++) {
+      const newVelocity = calculateVelocity(input[i], input[j])
+      input[i].velX = input[i].velX + newVelocity[0]
+      input[i].velY = input[i].velY + newVelocity[2]
+      input[i].velZ = input[i].velZ + newVelocity[4]
+      input[j].velX = input[j].velX + newVelocity[1]
+      input[j].velY = input[j].velY + newVelocity[3]
+      input[j].velZ = input[j].velZ + newVelocity[5]
 
-        console.log("inputNEW with updated VELOCITY", input)
-      }
+      console.log("inputNEW with updated VELOCITY", input)
     }
   }
 }
