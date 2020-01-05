@@ -8,6 +8,7 @@ export const CodeAdvent20191201 = () => {
   function handleClick() {
     const parsedInput = parseInput(data)
     console.log(parsedInput)
+    const updatedVelocities = computeAllVelocities(parsedInput)
     setResult("0")
   }
   return (
@@ -32,7 +33,66 @@ const parseInput = input => {
       item.indexOf("z=") + 2,
       item.indexOf(",", item.indexOf("z="))
     )
-    return { x: x, y: y, z: z, velX: 0, velY: 0, velZ: 0 }
+    return {
+      x: parseInt(x),
+      y: parseInt(y),
+      z: parseInt(z),
+      velX: 0,
+      velY: 0,
+      velZ: 0,
+    }
   })
   return output
+}
+
+const calculateVelocity = (moon1, moon2) => {
+  let velX1 = 0,
+    velX2 = 0,
+    velY1 = 0,
+    velY2 = 0,
+    velZ1 = 0,
+    velZ2 = 0
+  if (moon1.x > moon2.x) {
+    velX1 = -1
+    velX2 = +1
+  } else if (moon1.x < moon2.x) {
+    velX2 = -1
+    velX1 = +1
+  }
+
+  if (moon1.y > moon2.y) {
+    velY1 = -1
+    velY2 = +1
+  } else if (moon1.y < moon2.y) {
+    velY2 = -1
+    velY1 = +1
+  }
+
+  if (moon1.z > moon2.z) {
+    velZ1 = -1
+    velZ2 = +1
+  } else if (moon1.z < moon2.z) {
+    velZ2 = -1
+    velZ1 = +1
+  }
+  console.log(moon1, moon2)
+  return [velX1, velX2, velY1, velY2, velZ1, velZ2]
+}
+
+const computeAllVelocities = input => {
+  for (let i = 0; i < input.length; i++) {
+    for (let j = 0; j < input.length; j++) {
+      if (i !== j) {
+        const newVelocity = calculateVelocity(input[i], input[j])
+        input[i].velX = input[i].velX + newVelocity[0]
+        input[i].velY = input[i].velY + newVelocity[2]
+        input[i].velZ = input[i].velZ + newVelocity[4]
+        input[j].velX = input[j].velX + newVelocity[1]
+        input[j].velY = input[j].velY + newVelocity[3]
+        input[j].velZ = input[j].velZ + newVelocity[5]
+
+        console.log("inputNEW with updated VELOCITY", input)
+      }
+    }
+  }
 }
