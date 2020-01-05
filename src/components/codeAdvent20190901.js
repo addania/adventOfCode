@@ -17,7 +17,7 @@ export const CodeAdvent20190901 = () => {
   return (
     <div>
       <p style={{ fontWeight: "bold" }}>Sensor Boost:</p>
-      <p>BOOST keycode: {result} </p>
+      <p>Boost keycode: {result} </p>
       <button style={{ backgroundColor: "#A7A7A9" }}>
         <span onClick={handleClick}>Get Keycode</span>
       </button>
