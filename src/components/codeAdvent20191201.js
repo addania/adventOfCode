@@ -3,19 +3,20 @@ import data from "./AdventCodeInputs/CodeAdvent201912.json"
 import "./component.css"
 
 export const CodeAdvent20191201 = () => {
-  //const input = data
-  const input = [
-    "<x=-1, y=0, z=2>",
-    "<x=2, y=-10, z=-7>",
-    "<x=4, y=-8, z=8>",
-    "<x=3, y=5, z=-1>",
-  ]
+  const input = data
+  /*  const input = [
+"<x=-8, y=-10, z=0>",
+"<x=5, y=5, z=10>",
+"<x=2, y=-7, z=3>",
+"<x=9, y=-8, z=-3>",
+  ]*/
   const [result, setResult] = useState()
   function handleClick() {
     const parsedInput = parseInput(input)
-    console.log(parsedInput)
-    const updatedVelocities = computeAllVelocities(parsedInput)
-    setResult("0")
+    const numSteps = 1000
+    const finalMap = computeMap(parsedInput, numSteps)
+    const totalEnergy = calculateTotalEnergy(finalMap)
+    setResult(totalEnergy)
   }
   return (
     <div>
@@ -81,12 +82,11 @@ const calculateVelocity = (moon1, moon2) => {
     velZ2 = -1
     velZ1 = +1
   }
-  console.log(moon1, moon2)
   return [velX1, velX2, velY1, velY2, velZ1, velZ2]
 }
 
 const computeAllVelocities = input => {
-  for (let i = 0; i < input.length; i++) {
+  for (let i = 0; i < input.length - 1; i++) {
     for (let j = i + 1; j < input.length; j++) {
       const newVelocity = calculateVelocity(input[i], input[j])
       input[i].velX = input[i].velX + newVelocity[0]
@@ -95,8 +95,37 @@ const computeAllVelocities = input => {
       input[j].velX = input[j].velX + newVelocity[1]
       input[j].velY = input[j].velY + newVelocity[3]
       input[j].velZ = input[j].velZ + newVelocity[5]
-
-      console.log("inputNEW with updated VELOCITY", input)
     }
   }
+  return input
+}
+
+const applyVelocity = input => {
+  input.forEach(item => {
+    item.x = item.x + item.velX
+    item.y = item.y + item.velY
+    item.z = item.z + item.velZ
+  })
+  return input
+}
+
+const computeMap = (input, iteration) => {
+  for (let i = 0; i < iteration; i++) {
+    const updatedVelocities = computeAllVelocities(input)
+    input = applyVelocity(updatedVelocities)
+  }
+  return input
+}
+
+const calculateTotalEnergy = input => {
+  const individualEnergies = input.map(item => {
+    const itemEnergy =
+      (Math.abs(item.x) + Math.abs(item.y) + Math.abs(item.z)) *
+      (Math.abs(item.velX) + Math.abs(item.velY) + Math.abs(item.velZ))
+    return itemEnergy
+  })
+  const totalSum = individualEnergies.reduce((accumulator, item) => {
+    return accumulator + item
+  })
+  return totalSum
 }
