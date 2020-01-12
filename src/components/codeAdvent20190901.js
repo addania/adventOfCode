@@ -1027,7 +1027,7 @@ const calc2 = input => {
       current.one === 8 &&
       current.parameterMode1 === "relative" &&
       current.parameterMode2 === "relative" &&
-      current.parameterMode3 === "reelative"
+      current.parameterMode3 === "relative"
     ) {
       if (
         input[input[i + 1] + optCodeBase] === input[input[i + 2] + optCodeBase]

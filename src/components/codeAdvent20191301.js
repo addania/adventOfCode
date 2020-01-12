@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import data from "./AdventCodeInputs/CodeAdvent201909.json"
+import data from "./AdventCodeInputs/CodeAdvent201913.json"
 import "./component.css"
 
-export const CodeAdvent20190902 = () => {
+export const CodeAdvent20191301 = () => {
   const [input, setInput] = useState(data)
   const [result, setResult] = useState()
 
@@ -11,22 +11,29 @@ export const CodeAdvent20190902 = () => {
     let calculation = calc2(longInput)
     let numberArray = calculation[0]
     let outputArray = calculation[1]
-    let finalCode = outputArray[outputArray.length - 1]
-    setResult(finalCode)
+    console.log(outputArray)
+    const maxX = getMax(outputArray, 0)
+    const maxY = getMax(outputArray, 1)
+    console.log("maxX", maxX)
+    console.log("maxY", maxY)
+    let field = generateField(outputArray, maxX, maxY)
+    console.log("field", field)
+    //let finalCode = outputArray[outputArray.length - 1]
+    //setResult(finalCode)
   }
   return (
     <div>
-      <p style={{ fontWeight: "bold" }}>Sensor Boost:</p>
-      <p>Coordintes of distress signal: {result} </p>
-      <button style={{ backgroundColor: "#68C1B4" }}>
-        <span onClick={handleClick}>Get Keycode</span>
+      <p style={{ fontWeight: "bold" }}>Care Package:</p>
+      <p>Block Tiles: {result} </p>
+      <button style={{ backgroundColor: "#27A7C6" }}>
+        <span onClick={handleClick}>Start Game</span>
       </button>
     </div>
   )
 }
 
 const calc2 = input => {
-  let optCodeInput = 2
+  let optCodeInput = 1
   let optCodeOutputArray = []
   let x = 0
   let optCodeBase = 0
@@ -1098,4 +1105,26 @@ const increaseMemory = input => {
     input2.push(0)
   }
   return input2
+}
+
+const getMax = (input, start) => {
+  let max = 0
+  for (let i = start; i < input.length; i += 3) {
+    if (input[i] > max) {
+      max = input[i]
+    }
+  }
+  return max
+}
+
+const generateField = (input, maxX, maxY) => {
+  let field = []
+  for (let i = 0; i <= maxY; i++) {
+    const row = []
+    for (let j = 0; j <= maxX; j++) {
+      row.push(0)
+    }
+    field.push(row)
+  }
+  return field
 }

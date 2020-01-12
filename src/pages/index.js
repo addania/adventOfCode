@@ -25,6 +25,9 @@ import { CodeAdvent20191002 } from "../components/codeAdvent20191002.js"
 import { CodeAdvent20191101 } from "../components/codeAdvent20191101.js"
 import { CodeAdvent20191102 } from "../components/codeAdvent20191102.js"
 import { CodeAdvent20191201 } from "../components/codeAdvent20191201.js"
+import { CodeAdvent20191202 } from "../components/codeAdvent20191202.js"
+import { CodeAdvent20191301 } from "../components/codeAdvent20191301.js"
+import { CodeAdvent20192201 } from "../components/codeAdvent20192201.js"
 import { CodeAdvent20180101 } from "../components/codeAdvent20180101.js"
 import { CodeAdvent20180102 } from "../components/codeAdvent20180102.js"
 import { CodeAdvent20180201 } from "../components/codeAdvent20180201.js"
@@ -430,6 +433,48 @@ export default () => (
         </Col>
         <Col sm={9} style={{ maxWidth: "100%" }}>
           <CodeAdvent20191201 />
+        </Col>
+      </Row>
+      <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+        <Col sm={3}>
+          <p>Task 2019 12 01</p>
+          <a
+            href="https://adventofcode.com/2019/day/12"
+            style={{ fontSize: "12px" }}
+          >
+            Go to task
+          </a>
+        </Col>
+        <Col sm={9} style={{ maxWidth: "100%" }}>
+          <CodeAdvent20191202 />
+        </Col>
+      </Row>
+      <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+        <Col sm={3}>
+          <p>Task 2019 13 01</p>
+          <a
+            href="https://adventofcode.com/2019/day/13"
+            style={{ fontSize: "12px" }}
+          >
+            Go to task
+          </a>
+        </Col>
+        <Col sm={9} style={{ maxWidth: "100%" }}>
+          <CodeAdvent20191301 />
+        </Col>
+      </Row>
+      <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+        <Col sm={3}>
+          <p>Task 2019 22 01</p>
+          <a
+            href="https://adventofcode.com/2019/day/13"
+            style={{ fontSize: "12px" }}
+          >
+            Go to task
+          </a>
+        </Col>
+        <Col sm={9} style={{ maxWidth: "100%" }}>
+          <CodeAdvent20192201 />
         </Col>
       </Row>
       <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
