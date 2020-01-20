@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import data from "./AdventCodeInputs/CodeAdvent201913.json"
+import data from "./AdventCodeInputs/CodeAdvent201917.json"
 import "./component.css"
 
-export const CodeAdvent20191301 = () => {
+export const CodeAdvent20191701 = () => {
   const [input, setInput] = useState(data)
   const [result, setResult] = useState()
 
@@ -11,25 +11,35 @@ export const CodeAdvent20191301 = () => {
     let calculation = calc2(longInput)
     let numberArray = calculation[0]
     let outputArray = calculation[1]
-    const maxX = getMax(outputArray, 0)
-    const maxY = getMax(outputArray, 1)
-    let field = generateField(outputArray, maxX, maxY)
-    const game = drawGame(outputArray, field)
-    setResult(game[1])
+    let fieldInfo = generateField(outputArray)
+    console.log("field", fieldInfo.scaffold)
+    console.log("scaffNum", fieldInfo.scaffoldNum)
+    console.log("position", fieldInfo.position)
+    console.log("direction", fieldInfo.direction)
+    console.log("visited", fieldInfo.visitedCoordinates)
+    const output = countIntersections(
+      fieldInfo.scaffold,
+      fieldInfo.scaffoldNum,
+      fieldInfo.direction,
+      fieldInfo.position,
+      fieldInfo.visitedCoordinates
+    )
+    console.log("output", output)
+    setResult(0)
   }
   return (
     <div>
-      <p style={{ fontWeight: "bold" }}>Care Package:</p>
-      <p>Block Tiles: {result} </p>
-      <button style={{ backgroundColor: "#27A7C6" }}>
-        <span onClick={handleClick}>Start Game</span>
+      <p style={{ fontWeight: "bold" }}>Set and Forget:</p>
+      <p>Alignment parameters: {result} </p>
+      <button style={{ backgroundColor: "#68C1B4" }}>
+        <span onClick={handleClick}>Calculate Sum</span>
       </button>
     </div>
   )
 }
 
 const calc2 = input => {
-  let optCodeInput = 1
+  let optCodeInput = 2
   let optCodeOutputArray = []
   let x = 0
   let optCodeBase = 0
@@ -1103,35 +1113,145 @@ const increaseMemory = input => {
   return input2
 }
 
-const getMax = (input, start) => {
-  let max = 0
-  for (let i = start; i < input.length; i += 3) {
-    if (input[i] > max) {
-      max = input[i]
+const generateField = input => {
+  let found10 = false
+  let step = 0
+  let rowLength = 0
+  while (!found10) {
+    if (input[step] !== 10) {
+      step++
+    } else {
+      rowLength = step
+      found10 = true
     }
   }
-  return max
+  const numRows = Math.floor(input.length / (rowLength + 1))
+  let id = 0
+  let scaffold = []
+  let position
+  let direction
+  let visitedCoordinates = []
+  let scaffoldNum = 0
+  for (let row = 0; row < numRows; row++) {
+    let rowArray = []
+    for (let i = 0; i < rowLength + 1; i++) {
+      if (input[id] === 35) {
+        id++
+        rowArray.push("#")
+        scaffoldNum++
+      } else if (input[id] === 46) {
+        id++
+        rowArray.push(".")
+      } else if (input[id] === 94) {
+        id++
+        rowArray.push("#")
+        scaffoldNum++
+        direction = "^"
+        position = [row, i]
+        visitedCoordinates.push(row.toString() + "-" + i.toString())
+      } else if (input[id] === 10) {
+        id++
+      }
+    }
+    scaffold.push(rowArray)
+  }
+  return {
+    scaffold: scaffold,
+    scaffoldNum: scaffoldNum,
+    position: position,
+    direction: direction,
+    visitedCoordinates: visitedCoordinates,
+  }
 }
 
-const generateField = (input, maxX, maxY) => {
-  let field = []
-  for (let i = 0; i <= maxY; i++) {
-    const row = []
-    for (let j = 0; j <= maxX; j++) {
-      row.push(0)
-    }
-    field.push(row)
-  }
-  return field
+const countIntersections = (
+  scaffold,
+  scaffoldNum,
+  direction,
+  position,
+  visitedCoordinates
+) => {
+  let numIntersections = 0
+  let test = move(scaffold, "^", [19, 0])
+  for (let i = 0; i < scaffoldNum; i++) {}
+  return 0
 }
 
-const drawGame = (instructions, field) => {
-  let count = 0
-  for (let i = 0; i <= instructions.length - 3; i += 3) {
-    field[instructions[i + 1]][instructions[i]] = instructions[i + 2]
-    if (instructions[i + 2] === 2) {
-      count++
+const move = (scaffold, direction, position) => {
+  let newPosition
+  let newDirection = direction
+  if (direction === "^") {
+    if (scaffold[position[0] - 1][position[1]] === "#") {
+      newPosition = [position[0] - 1, position[1]]
+      console.log("up")
+      console.log("newPosition", newPosition)
+    } else if (scaffold[position[0] - 1][position[1]] === ".") {
+      if (scaffold[position[0]][position[1] + 1] === "#") {
+        newPosition = [position[0], position[1] + 1]
+        newDirection = ">"
+        console.log("right")
+        console.log("newPosition", newPosition)
+      } else if (scaffold[position[0]][position[1] - 1] === "#") {
+        newPosition = [position[0], position[1] - 1]
+        newDirection = "<"
+        console.log("left")
+        console.log("newPosition", newPosition)
+      }
+    }
+  } else if (direction === ">") {
+    if (scaffold[position[0]][position[1] + 1] === "#") {
+      newPosition = [position[0], position[1] + 1]
+      console.log("right")
+      console.log("newPosition", newPosition)
+    } else if (scaffold[position[0]][position[1] + 1] === ".") {
+      if (scaffold[position[0] + 1][position[1]] === "#") {
+        newPosition = [position[0] + 1, position[1]]
+        newDirection = "v"
+        console.log("down")
+        console.log("newPosition", newPosition)
+      } else if (scaffold[position[0] - 1][position[1]] === "#") {
+        newPosition = [position[0] - 1, position[1]]
+        newDirection = "^"
+        console.log("up")
+        console.log("newPosition", newPosition)
+      }
+    }
+  } else if (direction === "v") {
+    if (scaffold[position[0] + 1][position[1]] === "#") {
+      newPosition = [position[0] + 1, position[1]]
+      console.log("right")
+      console.log("newPosition", newPosition)
+    } else if (scaffold[position[0] + 1][position[1]] === ".") {
+      if (scaffold[position[0]][position[1] - 1] === "#") {
+        newPosition = [position[0], position[1] - 1]
+        newDirection = "<"
+        console.log("left")
+        console.log("newPosition", newPosition)
+      } else if (scaffold[position[0]][position[1] + 1] === "#") {
+        newPosition = [position[0], position[1] + 1]
+        newDirection = ">"
+        console.log("right")
+        console.log("newPosition", newPosition)
+      }
+    }
+  } else if (direction === "<") {
+    if (scaffold[position[0]][position[1] - 1] === "#") {
+      newPosition = [position[0], position[1] - 1]
+      console.log("left")
+      console.log("newPosition", newPosition)
+    } else if (scaffold[position[0]][position[1] - 1] === ".") {
+      if (scaffold[position[0] - 1][position[1]] === "#") {
+        newPosition = [position[0] - 1, position[1]]
+        newDirection = "^"
+        console.log("up")
+        console.log("newPosition", newPosition)
+      } else if (scaffold[position[0] - 1][position[1]] === "#") {
+        newPosition = [position[0] - 1, position[1]]
+        newDirection = "v"
+        console.log("down")
+        console.log("newPosition", newPosition)
+      }
     }
   }
-  return [field, count]
+  return 0
 }
