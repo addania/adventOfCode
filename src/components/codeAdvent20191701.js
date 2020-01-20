@@ -12,20 +12,15 @@ export const CodeAdvent20191701 = () => {
     let numberArray = calculation[0]
     let outputArray = calculation[1]
     let fieldInfo = generateField(outputArray)
-    console.log("field", fieldInfo.scaffold)
-    console.log("scaffNum", fieldInfo.scaffoldNum)
-    console.log("position", fieldInfo.position)
-    console.log("direction", fieldInfo.direction)
-    console.log("visited", fieldInfo.visitedCoordinates)
-    const output = countIntersections(
+    const intersectionInfo = countIntersections(
       fieldInfo.scaffold,
       fieldInfo.scaffoldNum,
       fieldInfo.direction,
       fieldInfo.position,
       fieldInfo.visitedCoordinates
     )
-    console.log("output", output)
-    setResult(0)
+    const sum = sumAlignmentParameters(intersectionInfo.intersections)
+    setResult(sum)
   }
   return (
     <div>
@@ -1171,87 +1166,125 @@ const countIntersections = (
   position,
   visitedCoordinates
 ) => {
+  let newDirection = direction
+  let newPosition = position
   let numIntersections = 0
-  let test = move(scaffold, "^", [19, 0])
-  for (let i = 0; i < scaffoldNum; i++) {}
-  return 0
+  let intersections = []
+  let visited = [...visitedCoordinates]
+  for (let i = 0; i < scaffoldNum + 12; i++) {
+    let newInfo = move(scaffold, newDirection, newPosition)
+    newDirection = newInfo.direction
+    newPosition = newInfo.position
+    let string = newPosition[0].toString() + "-" + newPosition[1].toString()
+    if (visited.includes(string)) {
+      numIntersections++
+      intersections.push(string)
+    } /*else {
+    visited.push(string)
+    }*/
+    visited.push(string)
+    /*    console.log("visited", visited)
+    console.log("intersections", intersections)
+    console.log("numIntersections", numIntersections)*/
+  }
+  return { numIntersections: numIntersections, intersections: intersections }
 }
 
 const move = (scaffold, direction, position) => {
   let newPosition
   let newDirection = direction
-  if (direction === "^") {
+  if (direction === "^" && position[0] !== 0) {
     if (scaffold[position[0] - 1][position[1]] === "#") {
       newPosition = [position[0] - 1, position[1]]
-      console.log("up")
-      console.log("newPosition", newPosition)
     } else if (scaffold[position[0] - 1][position[1]] === ".") {
       if (scaffold[position[0]][position[1] + 1] === "#") {
         newPosition = [position[0], position[1] + 1]
         newDirection = ">"
-        console.log("right")
-        console.log("newPosition", newPosition)
       } else if (scaffold[position[0]][position[1] - 1] === "#") {
         newPosition = [position[0], position[1] - 1]
         newDirection = "<"
-        console.log("left")
-        console.log("newPosition", newPosition)
       }
     }
-  } else if (direction === ">") {
+  } else if (direction === "^" && position[0] === 0) {
     if (scaffold[position[0]][position[1] + 1] === "#") {
       newPosition = [position[0], position[1] + 1]
-      console.log("right")
-      console.log("newPosition", newPosition)
+      newDirection = ">"
+    } else if (scaffold[position[0]][position[1] - 1] === "#") {
+      newPosition = [position[0], position[1] - 1]
+      newDirection = "<"
+    }
+  } else if (direction === ">" && position[1] !== 44) {
+    if (scaffold[position[0]][position[1] + 1] === "#") {
+      newPosition = [position[0], position[1] + 1]
     } else if (scaffold[position[0]][position[1] + 1] === ".") {
       if (scaffold[position[0] + 1][position[1]] === "#") {
         newPosition = [position[0] + 1, position[1]]
         newDirection = "v"
-        console.log("down")
-        console.log("newPosition", newPosition)
       } else if (scaffold[position[0] - 1][position[1]] === "#") {
         newPosition = [position[0] - 1, position[1]]
         newDirection = "^"
-        console.log("up")
-        console.log("newPosition", newPosition)
       }
     }
-  } else if (direction === "v") {
+  } else if (direction === ">" && position[1] === 44) {
     if (scaffold[position[0] + 1][position[1]] === "#") {
       newPosition = [position[0] + 1, position[1]]
-      console.log("right")
-      console.log("newPosition", newPosition)
+      newDirection = "v"
+    } else if (scaffold[position[0] - 1][position[1]] === "#") {
+      newPosition = [position[0] - 1, position[1]]
+      newDirection = "^"
+    }
+  } else if (direction === "v" && position[0] !== 32) {
+    if (scaffold[position[0] + 1][position[1]] === "#") {
+      newPosition = [position[0] + 1, position[1]]
     } else if (scaffold[position[0] + 1][position[1]] === ".") {
       if (scaffold[position[0]][position[1] - 1] === "#") {
         newPosition = [position[0], position[1] - 1]
         newDirection = "<"
-        console.log("left")
-        console.log("newPosition", newPosition)
       } else if (scaffold[position[0]][position[1] + 1] === "#") {
         newPosition = [position[0], position[1] + 1]
         newDirection = ">"
-        console.log("right")
-        console.log("newPosition", newPosition)
       }
     }
-  } else if (direction === "<") {
+  } else if (direction === "v" && position[0] === 32) {
     if (scaffold[position[0]][position[1] - 1] === "#") {
       newPosition = [position[0], position[1] - 1]
-      console.log("left")
-      console.log("newPosition", newPosition)
+      newDirection = "<"
+    } else if (scaffold[position[0]][position[1] + 1] === "#") {
+      newPosition = [position[0], position[1] + 1]
+      newDirection = ">"
+    }
+  } else if (direction === "<" && position[1] !== 0) {
+    if (scaffold[position[0]][position[1] - 1] === "#") {
+      newPosition = [position[0], position[1] - 1]
     } else if (scaffold[position[0]][position[1] - 1] === ".") {
       if (scaffold[position[0] - 1][position[1]] === "#") {
         newPosition = [position[0] - 1, position[1]]
         newDirection = "^"
-        console.log("up")
-        console.log("newPosition", newPosition)
-      } else if (scaffold[position[0] - 1][position[1]] === "#") {
-        newPosition = [position[0] - 1, position[1]]
+      } else if (scaffold[position[0] + 1][position[1]] === "#") {
+        newPosition = [position[0] + 1, position[1]]
         newDirection = "v"
-        console.log("down")
-        console.log("newPosition", newPosition)
       }
     }
+  } else if (direction === "<" && position[1] === 0) {
+    if (scaffold[position[0] - 1][position[1]] === "#") {
+      newPosition = [position[0] - 1, position[1]]
+      newDirection = "^"
+    } else if (scaffold[position[0] + 1][position[1]] === "#") {
+      newPosition = [position[0] + 1, position[1]]
+      newDirection = "v"
+    }
   }
-  return 0
+  return { direction: newDirection, position: newPosition }
+}
+
+const sumAlignmentParameters = intersections => {
+  const sum = 0
+  const array = intersections.map(item => {
+    const coordinates = item.split("-")
+    return coordinates[0] * coordinates[1]
+  })
+  const total = array.reduce((acc, current) => {
+    return acc + current
+  })
+  return total
 }
