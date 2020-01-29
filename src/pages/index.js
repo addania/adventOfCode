@@ -29,8 +29,10 @@ import { CodeAdvent20191202 } from "../components/codeAdvent20191202.js"
 import { CodeAdvent20191301 } from "../components/codeAdvent20191301.js"
 import { CodeAdvent20191601 } from "../components/codeAdvent20191601.js"
 import { CodeAdvent20191701 } from "../components/codeAdvent20191701.js"
+import { CodeAdvent20191901 } from "../components/codeAdvent20191901.js"
 import { CodeAdvent20192201 } from "../components/codeAdvent20192201.js"
 import { CodeAdvent20192202 } from "../components/codeAdvent20192202.js"
+import { CodeAdvent20192401 } from "../components/codeAdvent20192401.js"
 import { CodeAdvent20180101 } from "../components/codeAdvent20180101.js"
 import { CodeAdvent20180102 } from "../components/codeAdvent20180102.js"
 import { CodeAdvent20180201 } from "../components/codeAdvent20180201.js"
@@ -496,9 +498,23 @@ export default () => (
       </Row>
       <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
         <Col sm={3}>
+          <p>Task 2019 19 01</p>
+          <a
+            href="https://adventofcode.com/2019/day/19"
+            style={{ fontSize: "12px" }}
+          >
+            Go to task
+          </a>
+        </Col>
+        <Col sm={9} style={{ maxWidth: "100%" }}>
+          <CodeAdvent20191901 />
+        </Col>
+      </Row>
+      <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+        <Col sm={3}>
           <p>Task 2019 22 01</p>
           <a
-            href="https://adventofcode.com/2019/day/13"
+            href="https://adventofcode.com/2019/day/22"
             style={{ fontSize: "12px" }}
           >
             Go to task
@@ -512,7 +528,7 @@ export default () => (
         <Col sm={3}>
           <p>Task 2019 22 02</p>
           <a
-            href="https://adventofcode.com/2019/day/13"
+            href="https://adventofcode.com/2019/day/22"
             style={{ fontSize: "12px" }}
           >
             Go to task
@@ -520,6 +536,20 @@ export default () => (
         </Col>
         <Col sm={9} style={{ maxWidth: "100%" }}>
           <CodeAdvent20192202 />
+        </Col>
+      </Row>
+      <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+        <Col sm={3}>
+          <p>Task 2019 24 01</p>
+          <a
+            href="https://adventofcode.com/2019/day/24"
+            style={{ fontSize: "12px" }}
+          >
+            Go to task
+          </a>
+        </Col>
+        <Col sm={9} style={{ maxWidth: "100%" }}>
+          <CodeAdvent20192401 />
         </Col>
       </Row>
       <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
