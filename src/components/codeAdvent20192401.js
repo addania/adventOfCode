@@ -1,10 +1,9 @@
 import React, { useState } from "react"
-//import data from "./AdventCodeInputs/CodeAdvent201924.json"
+import data from "./AdventCodeInputs/CodeAdvent201924.json"
 import "./component.css"
 
 export const CodeAdvent20192401 = () => {
   const [result, setResult] = useState()
-  const data = ["....#", "#..#.", "#..##", "..#..", "#...."]
 
   function handleClick() {
     const history = []
@@ -24,14 +23,11 @@ export const CodeAdvent20192401 = () => {
         history.push(newInput.string)
       }
     }
-    console.log("newInput", newInput)
-    console.log("history", history)
-    console.log("biodiversityLayout", biodiversityLayout)
-    setResult(0)
+    setResult(calculateBiodiversity(biodiversityLayout))
   }
   return (
     <div>
-      <p style={{ fontWeight: "bold" }}>Planet of Discord (in Progress):</p>
+      <p style={{ fontWeight: "bold" }}>Planet of Discord:</p>
       <p>Bio-diversity: {result} </p>
       <button style={{ backgroundColor: "#27A7C6" }}>
         <span onClick={handleClick}>Observe bugs</span>
@@ -53,7 +49,6 @@ const infest = input => {
   for (let i = 0; i < eris.length; i++) {
     for (let j = 0; j < eris[0].length; j++) {
       const count = 0
-      console.log("i", i, "j", j)
       if (i === 0 && j > 0 && j < eris[0].length - 1) {
         if (eris[i][j + 1] === "#") {
           count++
@@ -144,8 +139,6 @@ const infest = input => {
           count++
         }
       }
-
-      console.log("count", count)
       if (eris[i][j] === "#" && count === 1) {
         field[i][j] = "#"
       } else if (eris[i][j] === "#" && count !== 1) {
@@ -157,9 +150,7 @@ const infest = input => {
       }
     }
   }
-  console.log("field", field)
   const newString = stringify(field)
-  console.log("newString", newString)
   return { field: field, string: newString }
 }
 
@@ -168,7 +159,6 @@ const generateEmptyField = (rows, columns) => {
   for (let i = 0; i < rows; i++) {
     empty.push(new Array(columns))
   }
-  console.log(empty)
   return empty
 }
 
@@ -179,6 +169,19 @@ const stringify = input => {
       string = string + input[i][j]
     }
   }
-  console.log(string)
   return string
+}
+
+const calculateBiodiversity = input => {
+  let sum = 0
+  let power = 0
+  for (let i = 0; i < input.length; i++) {
+    for (let j = 0; j < input[0].length; j++) {
+      if (input[i][j] === "#") {
+        sum = sum + Math.pow(2, power)
+      }
+      power++
+    }
+  }
+  return sum
 }
