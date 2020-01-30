@@ -8,16 +8,12 @@ export const CodeAdvent20191901 = () => {
 
   function handleClick() {
     let longInput = increaseMemory(input)
-    let calculation = calc2(longInput)
-    let numberArray = calculation[0]
-    let outputArray = calculation[1]
-    console.log("outputArray", outputArray)
-    let finalCode = outputArray[outputArray.length - 1]
-    //setResult(finalCode)
+    let beam = drawBeam(longInput)
+    setResult(beam.sum)
   }
   return (
     <div>
-      <p style={{ fontWeight: "bold" }}>Tractor Beam (in progress):</p>
+      <p style={{ fontWeight: "bold" }}>Tractor Beam:</p>
       <p>Attracted points: {result} </p>
       <button style={{ backgroundColor: "#68C1B4" }}>
         <span onClick={handleClick}>Evaluate points</span>
@@ -26,10 +22,9 @@ export const CodeAdvent20191901 = () => {
   )
 }
 
-const calc2 = input => {
-  let optCodeInput = [3, 3]
+const calc2 = (input, row, col) => {
+  let optCodeInput = [row, col]
   let optCodeInputIndex = 0
-  // let optCodeInput = 49
   let optCodeOutputArray = []
   let x = 0
   let optCodeBase = 0
@@ -375,18 +370,12 @@ const calc2 = input => {
     }
     /////////// CONDITION 3 ///////////
     else if (current.one === 3 && current.parameterMode1 === "position") {
-      //debugger;
       input[input[i + 1]] = optCodeInput[optCodeInputIndex]
       optCodeInputIndex++
-      console.log("optCodeInputIndex", optCodeInputIndex)
-      // input[input[i + 1]] = optCodeInput
       x = 2
     } else if (current.one === 3 && current.parameterMode1 === "relative") {
-      //debugger;
       input[input[i + 1] + optCodeBase] = optCodeInput[optCodeInputIndex]
       optCodeInputIndex++
-      console.log("optCodeInputIndex", optCodeInputIndex)
-      //input[input[i + 1] + optCodeBase] = optCodeInput
       x = 2
     }
     /////////// CONDITION 4 ///////////
@@ -1109,4 +1098,30 @@ const increaseMemory = input => {
     input2.push(0)
   }
   return input2
+}
+
+const generateEmptyField = (rows, columns) => {
+  const empty = []
+  for (let i = 0; i < rows; i++) {
+    empty.push(new Array(columns))
+  }
+  return empty
+}
+
+const drawBeam = input => {
+  let field = generateEmptyField(50, 50)
+  let sum = 0
+  for (let i = 0; i < field.length; i++) {
+    for (let j = 0; j < field[0].length; j++) {
+      let newInput = [...input]
+      const test = calc2(newInput, i, j)
+      if (test[1][0] === 1) {
+        field[i][j] = "#"
+        sum++
+      } else if (test[1][0] === 0) {
+        field[i][j] = "."
+      }
+    }
+  }
+  return { field: field, sum: sum }
 }
