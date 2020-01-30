@@ -1094,7 +1094,7 @@ function parseInput(number) {
 
 const increaseMemory = input => {
   const input2 = [...input]
-  for (let i = 0; i < 1000000; i += 1) {
+  for (let i = 0; i < 500; i += 1) {
     input2.push(0)
   }
   return input2
