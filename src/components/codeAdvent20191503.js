@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import data from "./AdventCodeInputs/CodeAdvent201915.json"
 import "./component.css"
 
-export const CodeAdvent20191501 = () => {
+export const CodeAdvent20191503 = () => {
   const [input, setInput] = useState(data)
   const [result, setResult] = useState()
 
@@ -27,199 +27,15 @@ export const CodeAdvent20191501 = () => {
 }
 
 const calc2 = input => {
-  /* const preference = [1, 3, 2, 4]
-  let previousMovement=0;
+  const preference = [1, 3, 2, 4]
+  let previousMovement = 0
   let preferenceIndex = 0
   let currentPosition = { x: 50, y: 50 }
-  let movementPossibilities = { "50-50": { x: 50, y: 50, movementsTried: [], freeMovement: [], walls: [] } }
-  */
-
-  let field = generateEmptyField(30, 30)
-  console.log("field", field)
-  let currentPosition = { x: 20, y: 11 }
-  field[currentPosition.y][currentPosition.x] = "."
-  let optCodeInput = [
-    1,
-    2,
-    3,
-    4,
-    1,
-    2,
-    4,
-    1,
-    4,
-    2,
-    4,
-    2,
-    4,
-    3,
-    2,
-    4,
-    3,
-    2,
-    4,
-    2,
-    3,
-    2,
-    3,
-    1,
-    2,
-    3,
-    1,
-    2,
-    3,
-    1,
-    2,
-    3,
-    1,
-    2,
-    3,
-    1,
-    2,
-    3,
-    1,
-    2,
-    3,
-    1,
-    2,
-    3,
-    1,
-    2,
-    3,
-    1,
-    2,
-    3,
-    1,
-    2,
-    3,
-    2,
-    3,
-    1,
-    3,
-    1,
-    3,
-    4,
-    1,
-    3,
-    4,
-    1,
-    4,
-    1,
-    3,
-    1,
-    3,
-    1,
-    3,
-    2,
-    3,
-    2,
-    2,
-    3,
-    2,
-    3,
-    1,
-    3,
-    2,
-    3,
-    2,
-    4,
-    2,
-    3,
-    2,
-    3,
-    1,
-    3,
-    2,
-    3,
-    2,
-    3,
-    2,
-    4,
-    2,
-    4,
-    4,
-    2,
-    4,
-    2,
-    4,
-    2,
-    3,
-    2,
-    3,
-    3,
-    2,
-    3,
-    2,
-    4,
-    3,
-    2,
-    4,
-    3,
-    2,
-    3,
-    2,
-    4,
-    2,
-    4,
-    1,
-    2,
-    4,
-    1,
-    2,
-    4,
-    1,
-    4,
-    2,
-    4,
-    2,
-    3,
-    2,
-    4,
-    2,
-    4,
-    2,
-    4,
-    1,
-    4,
-    1,
-    4,
-    1,
-    3,
-    4,
-    1,
-    4,
-    1,
-    3,
-    1,
-    3,
-    3,
-    3,
-    4,
-    1,
-    4,
-    1,
-    1,
-    4,
-    1,
-    4,
-    1,
-    1,
-    1,
-    2,
-    3,
-    4,
-    2,
-    4,
-    4,
-    4,
-    2,
-    4,
-    2,
-    4,
-    2,
-    4,
-  ]
-  //console.log("optCodeInput", optCodeInput)
+  let movementPossibilities = {
+    "50-50": { x: 50, y: 50, movementsTried: [], freeMovement: [], walls: [] },
+  }
+  let optCodeInput = [1]
+  console.log("optCodeInput", optCodeInput)
   let optCodeInputIndex = 0
   let optCodeOutputArray = []
   let x = 0
@@ -576,55 +392,149 @@ const calc2 = input => {
 
       x = 2
     }
-
     /////////// CONDITION 4 ///////////
     else if (current.one === 4 && current.parameterMode1 === "position") {
       let givenOutput = input[input[i + 1]]
-
       optCodeOutputArray.push(givenOutput)
 
       if (givenOutput === 0) {
-        if (optCodeInput[optCodeInputIndex - 1] === 1) {
-          field[currentPosition.y - 1][currentPosition.x] = "#"
-        } else if (optCodeInput[optCodeInputIndex - 1] === 2) {
-          field[currentPosition.y + 1][currentPosition.x] = "#"
-        } else if (optCodeInput[optCodeInputIndex - 1] === 3) {
-          field[currentPosition.y][currentPosition.x - 1] = "#"
-        } else if (optCodeInput[optCodeInputIndex - 1] === 4) {
-          field[currentPosition.y][currentPosition.x + 1] = "#"
-        }
-      }
+        if (preferenceIndex === 3) {
+          preferenceIndex = 0
+          if (previousMovement === 2 && preferenceIndex === 0) {
+            preferenceIndex++
+          }
 
-      if (givenOutput === 1) {
+          optCodeInput.push(preference[preferenceIndex])
+          console.log(optCodeInput)
+        } else if (preferenceIndex < 3) {
+          preferenceIndex = preferenceIndex + 1
+
+          if (previousMovement === 2 && preferenceIndex === 0) {
+            preferenceIndex++
+          }
+          if (previousMovement === 1 && preferenceIndex === 2) {
+            preferenceIndex++
+          }
+          if (previousMovement === 3 && preferenceIndex === 3) {
+            preferenceIndex++
+          }
+          if (previousMovement === 4 && preferenceIndex === 1) {
+            preferenceIndex++
+          }
+
+          optCodeInput.push(preference[preferenceIndex])
+          console.log(optCodeInput)
+        }
+      } else if (givenOutput === 1) {
+        debugger
         if (optCodeInput[optCodeInputIndex - 1] === 1) {
-          field[currentPosition.y - 1][currentPosition.x] = "."
           currentPosition.y = currentPosition.y - 1
+          preferenceIndex = 0
+          optCodeInput.push(preference[preferenceIndex])
+          console.log(optCodeInput)
         } else if (optCodeInput[optCodeInputIndex - 1] === 2) {
-          field[currentPosition.y + 1][currentPosition.x] = "."
           currentPosition.y = currentPosition.y + 1
+          preferenceIndex = 0
+          optCodeInput.push(preference[preferenceIndex - 1])
+          console.log(optCodeInput)
         } else if (optCodeInput[optCodeInputIndex - 1] === 3) {
-          field[currentPosition.y][currentPosition.x - 1] = "."
           currentPosition.x = currentPosition.x - 1
+          preferenceIndex = 0
+          optCodeInput.push(preference[preferenceIndex])
+          console.log(optCodeInput)
         } else if (optCodeInput[optCodeInputIndex - 1] === 4) {
-          field[currentPosition.y][currentPosition.x + 1] = "."
           currentPosition.x = currentPosition.x + 1
+          preferenceIndex = 0
+          optCodeInput.push(preference[preferenceIndex])
+          console.log(optCodeInput)
         }
-
-        //console.log("currentPosition", currentPosition)
       }
 
-      // console.log("optCodeOutputArray", optCodeOutputArray)
+      /*
+
+  IF YOU CAME FROM SOMEPLACE DONT GO BACK THERE if previous movement was 1 then next movement should not be 2, 
+  
+
+const preference = [1,3,2,4]
+  let preferenceIndex=0
+  let currentPosition = {x:50,y:50}
+  let movementPossibilities = {"50-50": {x:50,y:50, movements: []}}
+  let optCodeInput = [1]
+  console.log("optCodeInput", optCodeInput)
+  let optCodeInputIndex = 0
+  let optCodeOutputArray = []
+  let x = 0
+  let optCodeBase = 0
+
+    */
+
       x = 2
     } else if (current.one === 4 && current.parameterMode1 === "immediate") {
       let givenOutput = input[i + 1]
       optCodeOutputArray.push(givenOutput)
+
+      if (givenOutput === 0) {
+        preferenceIndex = preferenceIndex + 1
+        optCodeInput.push(preference[preferenceIndex])
+        console.log(optCodeInput)
+      } else if (givenOutput === 1) {
+        if (optCodeInput[optCodeInputIndex] === 1) {
+          currentPosition.y = currentPosition.y - 1
+          preferenceIndex = 0
+          optCodeInput.push(preference[preferenceIndex])
+          console.log(optCodeInput)
+        } else if (optCodeInput[optCodeInputIndex] === 2) {
+          currentPosition.y = currentPosition.y + 1
+          preferenceIndex = 0
+          optCodeInput.push(preference[preferenceIndex])
+          console.log(optCodeInput)
+        } else if (optCodeInput[optCodeInputIndex] === 3) {
+          currentPosition.x = currentPosition.x - 1
+          preferenceIndex = 0
+          optCodeInput.push(preference[preferenceIndex])
+          console.log(optCodeInput)
+        } else if (optCodeInput[optCodeInputIndex] === 4) {
+          currentPosition.x = currentPosition.x + 1
+          preferenceIndex = 0
+          optCodeInput.push(preference[preferenceIndex])
+          console.log(optCodeInput)
+        }
+      }
+
       x = 2
-      // console.log("optCodeOutputArray", optCodeOutputArray)
     } else if (current.one === 4 && current.parameterMode1 === "relative") {
       let givenOutput = input[input[i + 1] + optCodeBase]
       optCodeOutputArray.push(givenOutput)
+
+      if (givenOutput === 0) {
+        preferenceIndex = preferenceIndex + 1
+        optCodeInput.push(preference[preferenceIndex])
+        console.log(optCodeInput)
+      } else if (givenOutput === 1) {
+        if (optCodeInput[optCodeInputIndex] === 1) {
+          currentPosition.y = currentPosition.y - 1
+          preferenceIndex = 0
+          optCodeInput.push(preference[preferenceIndex])
+          console.log(optCodeInput)
+        } else if (optCodeInput[optCodeInputIndex] === 2) {
+          currentPosition.y = currentPosition.y + 1
+          preferenceIndex = 0
+          optCodeInput.push(preference[preferenceIndex])
+          console.log(optCodeInput)
+        } else if (optCodeInput[optCodeInputIndex] === 3) {
+          currentPosition.x = currentPosition.x - 1
+          preferenceIndex = 0
+          optCodeInput.push(preference[preferenceIndex])
+          console.log(optCodeInput)
+        } else if (optCodeInput[optCodeInputIndex] === 4) {
+          currentPosition.x = currentPosition.x + 1
+          preferenceIndex = 0
+          optCodeInput.push(preference[preferenceIndex])
+          console.log(optCodeInput)
+        }
+      }
+
       x = 2
-      //  console.log("optCodeOutputArray", optCodeOutputArray)
     }
     /////////// CONDITION 5 ///////////
     else if (
@@ -1285,6 +1195,18 @@ const calc2 = input => {
     } else {
       break
     }
+
+    console.log("preferenceIndex", preferenceIndex)
+    console.log("currentPosition", currentPosition)
+    console.log("movementPossibilities", movementPossibilities)
+    /*
+    
+    CURRENT POSITION DOES NOT CHANGE!!!!! should be 50-51
+
+     const preference = [1,3,2,4]
+  let preferenceIndex=0
+  let currentPosition = {x:50,y:50}
+  let movementPossibilities = {"50-50": {x:50,y:50, movements: []}}*/
   }
   return [input, optCodeOutputArray]
 }
@@ -1332,24 +1254,4 @@ const increaseMemory = input => {
     input2.push(0)
   }
   return input2
-}
-
-const generateEmptyField2 = (rows, columns) => {
-  const empty = []
-  for (let i = 0; i < rows; i++) {
-    empty.push(new Array(columns))
-  }
-  return empty
-}
-
-const generateEmptyField = (rows, columns) => {
-  const empty = []
-  for (let i = 0; i < rows; i++) {
-    let row = []
-    for (let j = 0; j < columns; j++) {
-      row.push("?")
-    }
-    empty.push(row)
-  }
-  return empty
 }
