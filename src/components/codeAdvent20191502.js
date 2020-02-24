@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import data from "./AdventCodeInputs/CodeAdvent201915.json"
 // Below is the entire maze
 import optCodeInput from "./AdventCodeInputs/CodeAdvent201915Input.json"
-// Here is the shortest path
-//import optCodeInput from "./AdventCodeInputs/CodeAdvent201915Input2.json"
+// Here is the shortest path to oxygen
+// import optCodeInput from "./AdventCodeInputs/CodeAdvent201915Input2.json"
 import "./component.css"
 // start / oxygen {x: 36, y: 23}
 export const CodeAdvent20191502 = () => {
@@ -35,9 +35,9 @@ export const CodeAdvent20191502 = () => {
 }
 
 const calc2 = input => {
-  let field = generateEmptyField(40, 40)
+  let field = generateEmptyField(50, 40)
   // console.log("field", field)
-  let currentPosition = { x: 20, y: 11 }
+  let currentPosition = { x: 20, y: 21 }
   field[currentPosition.y][currentPosition.x] = "."
   let optCodeInputIndex = 0
   let optCodeOutputArray = []
@@ -444,7 +444,7 @@ const calc2 = input => {
           currentPosition.x = currentPosition.x + 1
         }
       }
-      console.log("currentPosition", currentPosition)
+      // console.log("currentPosition", currentPosition)
       /* if (currentPosition.x === 31 && currentPosition.y === 23 ){
       	console.log("outputttt", optCodeOutputArray)
       	debugger;
