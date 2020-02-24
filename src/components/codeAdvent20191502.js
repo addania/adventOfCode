@@ -35,9 +35,9 @@ export const CodeAdvent20191502 = () => {
 }
 
 const calc2 = input => {
-  let field = generateEmptyField(50, 40)
+  let field = generateEmptyField(50, 50)
   // console.log("field", field)
-  let currentPosition = { x: 20, y: 21 }
+  let currentPosition = { x: 25, y: 21 }
   field[currentPosition.y][currentPosition.x] = "."
   let optCodeInputIndex = 0
   let optCodeOutputArray = []
