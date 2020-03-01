@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import _ from "lodash"
 import data from "./AdventCodeInputs/CodeAdvent201915.json"
 // Below is the entire maze
 import optCodeInput from "./AdventCodeInputs/CodeAdvent201915Input.json"
@@ -17,11 +18,10 @@ export const CodeAdvent20191502 = () => {
     let outputArray = calculation[1]
     let labyrinth = calculation[2]
     console.log("labyrinth", labyrinth)
-    let start = calculation[3]
+    let start = findOxygen(labyrinth)
     console.log("start", start)
     let time = oxygenate(labyrinth, start)
-    let finalCode = outputArray[outputArray.length - 1]
-    setResult(outputArray.length)
+    setResult(time)
   }
   return (
     <div>
@@ -35,9 +35,9 @@ export const CodeAdvent20191502 = () => {
 }
 
 const calc2 = input => {
-  let field = generateEmptyField(50, 50)
+  let field = generateEmptyField(41, 41)
   // console.log("field", field)
-  let currentPosition = { x: 25, y: 21 }
+  let currentPosition = { x: 21, y: 21 }
   field[currentPosition.y][currentPosition.x] = "."
   let optCodeInputIndex = 0
   let optCodeOutputArray = []
@@ -1187,6 +1187,63 @@ const generateEmptyField = (rows, columns) => {
   return empty
 }
 
+const findOxygen = labyrinth => {
+  let start
+  for (let y = 0; y < labyrinth.length; y++) {
+    for (let x = 0; x < labyrinth[0].length; x++) {
+      if (labyrinth[y][x] === "X") {
+        start = { x: x, y: y }
+        break
+      }
+    }
+  }
+  return start
+}
+
 const oxygenate = (labyrinth, start) => {
-  return 0
+  let vacuumStatus = countVacuum(labyrinth)
+  console.log("vacuumStatus", vacuumStatus)
+  let time = 0
+  let benchmark = _.cloneDeep(labyrinth)
+  let nextBenchmark = _.cloneDeep(benchmark)
+  console.log("labOriginal", labyrinth)
+  console.log("labCloned", benchmark)
+  console.log("labClonedCloned", nextBenchmark)
+
+  while (vacuumStatus > 0) {
+    for (let y = 0; y < benchmark.length; y++) {
+      for (let x = 0; x < benchmark[0].length; x++) {
+        if (benchmark[y][x] === "X") {
+          if (benchmark[y - 1][x] === ".") {
+            nextBenchmark[y - 1][x] = "X"
+          }
+          if (benchmark[y + 1][x] === ".") {
+            nextBenchmark[y + 1][x] = "X"
+          }
+          if (benchmark[y][x - 1] === ".") {
+            nextBenchmark[y][x - 1] = "X"
+          }
+          if (benchmark[y][x + 1] === ".") {
+            nextBenchmark[y][x + 1] = "X"
+          }
+        }
+      }
+    }
+    time++
+    benchmark = nextBenchmark
+    vacuumStatus = countVacuum(nextBenchmark)
+  }
+  return time
+}
+
+const countVacuum = labyrinth => {
+  let count = 0
+  for (let y = 0; y < labyrinth.length; y++) {
+    for (let x = 0; x < labyrinth[0].length; x++) {
+      if (labyrinth[y][x] === ".") {
+        count++
+      }
+    }
+  }
+  return count
 }
