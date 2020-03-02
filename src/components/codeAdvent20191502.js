@@ -1230,7 +1230,7 @@ const oxygenate = (labyrinth, start) => {
       }
     }
     time++
-    benchmark = nextBenchmark
+    benchmark = _.cloneDeep(nextBenchmark)
     vacuumStatus = countVacuum(nextBenchmark)
   }
   return time
