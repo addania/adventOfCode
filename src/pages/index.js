@@ -2,6 +2,12 @@ import React from "react"
 import "./index.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Row, Col, Container } from "react-bootstrap"
+import { CodeAdvent20200101 } from "../components/codeAdvent20200101.js"
+import { CodeAdvent20200102 } from "../components/codeAdvent20200102.js"
+import { CodeAdvent20200201 } from "../components/codeAdvent20200201.js"
+import { CodeAdvent20200202 } from "../components/codeAdvent20200202.js"
+import { CodeAdvent20200301 } from "../components/codeAdvent20200301.js"
+import { CodeAdvent20200302 } from "../components/codeAdvent20200302.js"
 import { CodeAdvent20190101 } from "../components/codeAdvent20190101.js"
 import { CodeAdvent20190102 } from "../components/codeAdvent20190102.js"
 import { CodeAdvent20190201 } from "../components/codeAdvent20190201.js"
@@ -53,6 +59,12 @@ import { FetchAPItest2 } from "../components/fetchAPItest2.js"
 
 /* COLOUR PALETTE
 
+
+Red:
+#8E0C0C
+#C21F1F
+#A7A7A9
+
 Green:
 #6BAA75
 #A7A7A9
@@ -72,6 +84,8 @@ More:
 
 
 */
+
+const red = { "0": "#6E0407", "1": "#8E0C0C", "2": "#A11313", "3": "#C21F1F" }
 
 export default () => (
   <div className="App">
@@ -99,6 +113,107 @@ export default () => (
             style={{
               margin: "30px 0px",
               textAlign: "center",
+              color: red[3],
+            }}
+          >
+            YEAR 2020
+          </h2>
+        </Col>
+      </Row>
+      <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+        <Col sm={3}>
+          <p>Task 2020 01 01</p>
+          <a
+            href="https://adventofcode.com/2020/day/1"
+            style={{ fontSize: "12px" }}
+          >
+            Go to task
+          </a>
+        </Col>
+        <Col sm={9} style={{ maxWidth: "100%" }}>
+          <CodeAdvent20200101 />
+        </Col>
+      </Row>
+      <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+        <Col sm={3}>
+          <p>Task 2020 01 02</p>
+          <a
+            href="https://adventofcode.com/2020/day/1"
+            style={{ fontSize: "12px" }}
+          >
+            Go to task
+          </a>
+        </Col>
+        <Col sm={9} style={{ maxWidth: "100%" }}>
+          <CodeAdvent20200102 />
+        </Col>
+      </Row>
+
+      <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+        <Col sm={3}>
+          <p>Task 2020 02 01</p>
+          <a
+            href="https://adventofcode.com/2020/day/2"
+            style={{ fontSize: "12px" }}
+          >
+            Go to task
+          </a>
+        </Col>
+        <Col sm={9} style={{ maxWidth: "100%" }}>
+          <CodeAdvent20200201 />
+        </Col>
+      </Row>
+      <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+        <Col sm={3}>
+          <p>Task 2020 02 02</p>
+          <a
+            href="https://adventofcode.com/2020/day/2"
+            style={{ fontSize: "12px" }}
+          >
+            Go to task
+          </a>
+        </Col>
+        <Col sm={9} style={{ maxWidth: "100%" }}>
+          <CodeAdvent20200202 />
+        </Col>
+      </Row>
+
+      <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+        <Col sm={3}>
+          <p>Task 2020 03 01</p>
+          <a
+            href="https://adventofcode.com/2020/day/3"
+            style={{ fontSize: "12px" }}
+          >
+            Go to task
+          </a>
+        </Col>
+        <Col sm={9} style={{ maxWidth: "100%" }}>
+          <CodeAdvent20200301 />
+        </Col>
+      </Row>
+      <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+        <Col sm={3}>
+          <p>Task 2020 03 02</p>
+          <a
+            href="https://adventofcode.com/2020/day/3"
+            style={{ fontSize: "12px" }}
+          >
+            Go to task
+          </a>
+        </Col>
+        <Col sm={9} style={{ maxWidth: "100%" }}>
+          <CodeAdvent20200302 />
+        </Col>
+      </Row>
+
+      <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
+        <Col sm={3}></Col>
+        <Col sm={9}>
+          <h2
+            style={{
+              margin: "30px 0px",
+              textAlign: "center",
               color: "#27A7C6",
             }}
           >
@@ -106,6 +221,7 @@ export default () => (
           </h2>
         </Col>
       </Row>
+
       <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
         <Col sm={3}>
           <p>Task 2019 01 01</p>
