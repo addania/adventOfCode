@@ -3,7 +3,7 @@ import data from "./AdventCodeInputs/CodeAdvent202001.json"
 import "./component.css"
 
 export const CodeAdvent20200101 = () => {
-  const [expenses, setExpenses] = useState(data)
+  const [expenses] = useState(data)
   const [total, setTotal] = useState()
   function handleClick() {
     let result = findNumbers(expenses)

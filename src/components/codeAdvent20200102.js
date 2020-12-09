@@ -3,7 +3,7 @@ import data from "./AdventCodeInputs/CodeAdvent202001.json"
 import "./component.css"
 
 export const CodeAdvent20200102 = () => {
-  const [expenses, setExpenses] = useState(data)
+  const [expenses] = useState(data)
   const [total, setTotal] = useState()
   function handleClick() {
     let result = findNumbers(expenses)
@@ -26,7 +26,6 @@ function findNumbers(input) {
       for (let k = 0; k < input.length - 1; k++) {
         if (i !== j && i !== k && j !== k) {
           if (input[i] + input[j] + input[k] === 2020) {
-            console.log(input[i], input[j], input[k])
             return [input[i], input[j], input[k]]
           }
         }

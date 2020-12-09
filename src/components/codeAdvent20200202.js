@@ -3,7 +3,7 @@ import data from "./AdventCodeInputs/CodeAdvent202002.json"
 import "./component.css"
 
 export const CodeAdvent20200202 = () => {
-  const [passwords, setPasswords] = useState(data)
+  const [passwords] = useState(data)
   const [total, setTotal] = useState()
   function handleClick() {
     let result = findValid(passwords)
@@ -12,9 +12,9 @@ export const CodeAdvent20200202 = () => {
   return (
     <div>
       <p style={{ fontWeight: "bold" }}>Password Philosophy:</p>
-      <p>Valid passwords: {total} </p>
+      <p>Valider passwords: {total} </p>
       <button style={{ backgroundColor: "#8E0C0C" }}>
-        <span onClick={handleClick}>Calculate</span>
+        <span onClick={handleClick}>Find valider</span>
       </button>
     </div>
   )
