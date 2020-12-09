@@ -778,7 +778,7 @@ export default () => (
       </Row>
       <Row style={{ borderBottom: "0.5px solid #E8E8EA" }}>
         <Col sm={3}>
-          <p>Task 2019 12 01</p>
+          <p>Task 2019 12 02</p>
           <a
             href="https://adventofcode.com/2019/day/12"
             style={{ fontSize: "12px" }}

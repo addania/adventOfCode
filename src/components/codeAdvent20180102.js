@@ -3,11 +3,8 @@ import data from "./AdventCodeInputs/CodeAdvent201801.json"
 import "./component.css"
 
 export const CodeAdvent20180102 = () => {
-  const [array, setArray] = useState(data)
-  const [total, setTotal] = useState(0)
-  const [uniq, setUniq] = useState({ 0: 1 })
+  const [array] = useState(data)
   const [result, setResult] = useState()
-  const [goOn, setGoOn] = useState(true)
 
   function handleClick() {
     let sum = 0
@@ -17,7 +14,7 @@ export const CodeAdvent20180102 = () => {
     let i = 0
     while (proceed && i < 140) {
       i = i + 1
-      array.map((item, index) => {
+      array.map(item => {
         sum = sum + item
         if (uniques[sum] === 1 && proceed === true) {
           proceed = false

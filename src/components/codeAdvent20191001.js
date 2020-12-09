@@ -3,7 +3,7 @@ import data from "./AdventCodeInputs/CodeAdvent201910.json"
 import "./component.css"
 
 export const CodeAdvent20191001 = () => {
-  const [asteroidData, setAsteroidData] = useState(data)
+  const [asteroidData] = useState(data)
   /*const [asteroidData, setAsteroidData] = useState([
     ".#..#",
     ".....",

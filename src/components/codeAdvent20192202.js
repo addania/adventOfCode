@@ -10,35 +10,16 @@ export const CodeAdvent20192202 = () => {
     const cards = createCards(20011)
     const parsedData = parseInput(deck)
     let finalDeck = cards
-    // let winner=[];
-    //let winner2=[];
-    // let position2020=[finalDeck[2020]];
     for (let i = 0; i < 20010; i++) {
-      //console.log("i:", i)
       finalDeck = play(parsedData, finalDeck)
-      //console.log("finalDeck", finalDeck)
-      //position2020.push(finalDeck[2020])
-      //console.log("i:", i, "finalDeck[2020]:", finalDeck[2020])
-      /* if (finalDeck[2020] === 2020){
-      winner.push(i+1);
-     }
-    
-    if (finalDeck[2020] === 6533){
-      winner2.push(i+1);
-     }*/
     }
-
-    //console.log("finalDeck", finalDeck)
-    //console.log("winner", winner)
-    //console.log("winner2", winner2)
-    //console.log("position2020", position2020)
     setResult(finalDeck[2020])
   }
   return (
     <div>
       <p style={{ fontWeight: "bold" }}>Slam Shuffle (in Progress):</p>
       <p>Position 2020 Card: {result} </p>
-      <button style={{ backgroundColor: "#27A7C6" }}>
+      <button style={{ backgroundColor: "#7F6A93" }}>
         <span onClick={handleClick}>Shuffle Cards</span>
       </button>
     </div>

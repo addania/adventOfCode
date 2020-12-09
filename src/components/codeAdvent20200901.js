@@ -28,7 +28,7 @@ function fun(input, preamble) {
 
     for (let j = i - preamble; j < i; j++) {
       for (let k = j; k < i - 1; k++) {
-        if (parseInt(input[j]) != parseInt(input[k + 1])) {
+        if (parseInt(input[j]) !== parseInt(input[k + 1])) {
           data.push({
             position: i,
             number: parseInt(input[i]),

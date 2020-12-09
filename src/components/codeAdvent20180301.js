@@ -3,7 +3,7 @@ import data from "./AdventCodeInputs/CodeAdvent201803.json"
 import "./component.css"
 
 export const CodeAdvent20180301 = () => {
-  const [claims, setClaims] = useState(data)
+  const [claims] = useState(data)
   const [overlaps, setOverlaps] = useState()
   const [uniqueClaim, setUniqueClaim] = useState()
 

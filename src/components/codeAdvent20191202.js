@@ -29,7 +29,7 @@ export const CodeAdvent20191202 = () => {
     <div>
       <p style={{ fontWeight: "bold" }}>The N-Body Problem (in Progress):</p>
       <p>Nr. Iterations: {result} </p>
-      <button style={{ backgroundColor: "#68C1B4" }}>
+      <button style={{ backgroundColor: "#7F6A93" }}>
         <span onClick={handleClick}>Repeat History</span>
       </button>
     </div>

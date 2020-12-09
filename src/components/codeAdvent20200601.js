@@ -27,7 +27,7 @@ function fun(input) {
   let allYes = 0
   for (let i = 0; i < input.length; i++) {
     for (let j = 0; j < input[i].length; j++) {}
-    if (input[i] == "") {
+    if (input[i] === "") {
       data.push({
         groupId: groupId,
         uniques: uniques,

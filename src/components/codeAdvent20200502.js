@@ -62,7 +62,7 @@ function fun(input) {
 
     if (startIndex !== endIndex) {
     }
-    const id = startIndex * 8 + start
+    let id = startIndex * 8 + start
     if (input[i][6] === "B") {
       id = endIndex * 8 + start
     }
@@ -83,16 +83,12 @@ function fun(input) {
     field[startIndex][start] = 1
   }
 
-  const sorted = ids.sort(function(a, b) {
-    return a - b
-  })
-
   const sortedSet = Array.from(mySet).sort(function(a, b) {
     return a - b
   })
 
   let final = 0
-  let potential = []
+
   for (let z = 0; z < sortedSet.length - 2; z++) {
     if (sortedSet[z] + 1 !== sortedSet[z + 1]) {
       final = sortedSet[z] + 1

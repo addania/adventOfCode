@@ -7,7 +7,6 @@ export const CodeAdvent20191601 = () => {
   const [result, setResult] = useState()
 
   function handleClick() {
-    const parsedData = parseInput(data)
     const resultAfterPhases = simulatePhases(data, pattern, 100)
     setResult(
       resultAfterPhases[0].toString() +
@@ -30,9 +29,9 @@ export const CodeAdvent20191601 = () => {
     </div>
   )
 }
-const parseInput = input => {
+/*const parseInput = input => {
   return input.split("").map(Number)
-}
+}*/
 
 const generatePattern = (pattern, length, iteration) => {
   let newPattern = []
@@ -62,7 +61,7 @@ const calculatePhase = (data, pattern) => {
 
   for (let i = 1; i <= data.length; i++) {
     const currentPattern = generatePattern(pattern, data.length, i)
-    const output = 0
+    let output = 0
     for (let j = 0; j < data.length; j++) {
       output = output + data[j] * currentPattern[j]
     }

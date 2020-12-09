@@ -22,13 +22,12 @@ export const CodeAdvent20200602 = () => {
 
 function fun(input) {
   let groupId = 0
-  let uniques = new Set()
   let data = []
   let allYes = 0
   let alphabet = "abcdefghijklmnopqrstuvwxyz".split("")
   let resultsGroup = new Array(alphabet.length).fill(1)
   for (let i = 0; i < input.length; i++) {
-    if (input[i] == "") {
+    if (input[i] === "") {
       let sum = 0
       for (let k = 0; k < resultsGroup.length; k++) {
         sum = sum + resultsGroup[k]

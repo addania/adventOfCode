@@ -3,7 +3,7 @@ import data from "./AdventCodeInputs/CodeAdvent201802.json"
 import "./component.css"
 
 export const CodeAdvent20180201 = () => {
-  const [boxIDs, setboxIDs] = useState(data)
+  const [boxIDs] = useState(data)
   const [checkSum, setCheckSum] = useState()
 
   function handleClick() {

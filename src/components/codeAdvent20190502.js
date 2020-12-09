@@ -3,12 +3,11 @@ import data from "./AdventCodeInputs/CodeAdvent201905.json"
 import "./component.css"
 
 export const CodeAdvent20190502 = () => {
-  const [input, setInput] = useState(data)
+  const [input] = useState(data)
   const [result, setResult] = useState()
 
   function handleClick() {
     let calculation = calc2(input)
-    let numberArray = calculation[0]
     let outputArray = calculation[1]
     let finalCode = outputArray[outputArray.length - 1]
     setResult(finalCode)

@@ -10,6 +10,7 @@ export const CodeAdvent20191002 = () => {
   const [asteroidsCount, setAsteroidsCount] = useState()
   const [winnerAsteroid, setWinnerAsteroid] = useState({})
   const [positionCalculation, setPositionCalculation] = useState()
+  console.log(maxAsteroids, stationLocation, asteroidsCount)
   const handleClick = () => {
     const asteroidPositions = asteroidData
       .map((row, i) => getXCoordinates(row, i))
@@ -165,9 +166,8 @@ const getXCoordinates = (input, yCoordinates) => {
 }
 
 const getEquation = (pointA, pointB) => {
-  const equationLeftConstant = pointA.y
   const equationRightConstant1 = (pointA.x - pointB.x) / (pointA.y - pointB.y)
-  const equationRightConstant2 = pointA.x
+
   const dist = calculateDistance(pointA, pointB)
   if (pointA.y === pointB.y) {
     return {
@@ -227,7 +227,7 @@ const getEquation = (pointA, pointB) => {
   }
 }
 
-const checkIfOnSameLine = (pointA, pointB, pointC) => {
+/*const checkIfOnSameLine = (pointA, pointB, pointC) => {
   const equation = getEquation(pointA, pointB)
   if (equation.isHorizontal) {
     return pointC.y === equation.eqLC
@@ -238,7 +238,7 @@ const checkIfOnSameLine = (pointA, pointB, pointC) => {
       pointC.y - equation.eqLC === equation.eqRC1 * (pointC.x - equation.eqRC2)
     )
   }
-}
+}*/
 
 const calculateDistance = (pointA, pointB) => {
   const distance = Math.sqrt(
@@ -248,7 +248,7 @@ const calculateDistance = (pointA, pointB) => {
   return distance
 }
 
-const checkMinDistance = (pointA, pointB, pointC) => {
+/*const checkMinDistance = (pointA, pointB, pointC) => {
   let min
   const checkPoint = checkIfOnSameLine(pointA, pointB, pointC)
   if (checkPoint) {
@@ -261,7 +261,7 @@ const checkMinDistance = (pointA, pointB, pointC) => {
     }
   }
   return min
-}
+}*/
 
 const groupAsteroids = (input, station) => {
   const newInput = input.map(item => {

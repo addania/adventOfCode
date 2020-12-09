@@ -9,7 +9,6 @@ export const CodeAdvent20192201 = () => {
   function handleClick() {
     const cards = createCards(10007)
     const parsedData = parseInput(deck)
-    let cards4 = dealWithIncrement(cards, 3)
     let finalDeck = play(parsedData, cards)
     setResult(finalDeck.indexOf(2019))
   }

@@ -3,7 +3,7 @@ import data from "./AdventCodeInputs/CodeAdvent201902.json"
 import "./component.css"
 
 export const CodeAdvent20190202 = () => {
-  const [input, setInput] = useState(data)
+  const [input] = useState(data)
   const [result, setResult] = useState()
 
   function handleClick() {
@@ -22,7 +22,6 @@ export const CodeAdvent20190202 = () => {
 }
 
 function final(input) {
-  let output = []
   let finalNumber = 0
   for (let x = 0; x < 100; x++) {
     for (let y = 0; y < 100; y++) {

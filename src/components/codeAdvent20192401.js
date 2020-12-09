@@ -48,7 +48,7 @@ const infest = input => {
   const field = generateEmptyField(eris.length, eris[0].length)
   for (let i = 0; i < eris.length; i++) {
     for (let j = 0; j < eris[0].length; j++) {
-      const count = 0
+      let count = 0
       if (i === 0 && j > 0 && j < eris[0].length - 1) {
         if (eris[i][j + 1] === "#") {
           count++

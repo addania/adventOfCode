@@ -3,7 +3,7 @@ import data from "./AdventCodeInputs/CodeAdvent201919.json"
 import "./component.css"
 
 export const CodeAdvent20191901 = () => {
-  const [input, setInput] = useState(data)
+  const [input] = useState(data)
   const [result, setResult] = useState()
 
   function handleClick() {

@@ -56,8 +56,6 @@ function fun(input) {
   const colorz = Object.keys(data)
   for (let k = 0; k < colorz.length; k++) {
     let count = 0
-    let total = 0
-
     const rec = color => {
       if ("shiny gold" in data[color]) {
         count = count + 1

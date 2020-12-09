@@ -3,10 +3,7 @@ import data from "./AdventCodeInputs/CodeAdvent201907.json"
 import "./component.css"
 
 export const CodeAdvent20190702 = () => {
-  const [
-    amplifierControllerSoftware,
-    setAmplifierControllerSoftware,
-  ] = useState(data)
+  const [amplifierControllerSoftware] = useState(data)
   const [maxSetting, setMaxSetting] = useState()
   const [result, setResult] = useState()
 
@@ -20,7 +17,6 @@ export const CodeAdvent20190702 = () => {
           for (let am4 = 5; am4 < 10; am4++) {
             for (let am5 = 5; am5 < 10; am5++) {
               let initialInput = 0
-              let firstLoop = true
               if (
                 am1 !== am2 &&
                 am1 !== am3 &&

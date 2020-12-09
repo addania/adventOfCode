@@ -3,7 +3,7 @@ import data from "./AdventCodeInputs/CodeAdvent201903.json"
 import "./component.css"
 
 export const CodeAdvent20190302 = () => {
-  const [wires, setWires] = useState(data)
+  const [wires] = useState(data)
 
   const [result, setResult] = useState()
 

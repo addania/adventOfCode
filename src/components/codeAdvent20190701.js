@@ -3,10 +3,7 @@ import data from "./AdventCodeInputs/CodeAdvent201907.json"
 import "./component.css"
 
 export const CodeAdvent20190701 = () => {
-  const [
-    amplifierControllerSoftware,
-    setAmplifierControllerSoftware,
-  ] = useState(data)
+  const [amplifierControllerSoftware] = useState(data)
   const [maxSetting, setMaxSetting] = useState({
     am1: "",
     am2: "",

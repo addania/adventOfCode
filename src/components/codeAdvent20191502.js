@@ -8,14 +8,12 @@ import optCodeInput from "./AdventCodeInputs/CodeAdvent201915Input.json"
 import "./component.css"
 // start / oxygen {x: 36, y: 23}
 export const CodeAdvent20191502 = () => {
-  const [input, setInput] = useState(data)
+  const [input] = useState(data)
   const [result, setResult] = useState()
 
   function handleClick() {
     let longInput = increaseMemory(input)
     let calculation = calc2(longInput)
-    let numberArray = calculation[0]
-    let outputArray = calculation[1]
     let labyrinth = calculation[2]
     console.log("labyrinth", labyrinth)
     let start = findOxygen(labyrinth)
@@ -1167,13 +1165,13 @@ const increaseMemory = input => {
   return input2
 }
 
-const generateEmptyField2 = (rows, columns) => {
+/*const generateEmptyField2 = (rows, columns) => {
   const empty = []
   for (let i = 0; i < rows; i++) {
     empty.push(new Array(columns))
   }
   return empty
-}
+}*/
 
 const generateEmptyField = (rows, columns) => {
   const empty = []

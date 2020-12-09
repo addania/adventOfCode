@@ -7,15 +7,13 @@ import optCodeInput from "./AdventCodeInputs/CodeAdvent201915Input2.json"
 import "./component.css"
 
 export const CodeAdvent20191501 = () => {
-  const [input, setInput] = useState(data)
+  const [input] = useState(data)
   const [result, setResult] = useState()
 
   function handleClick() {
     let longInput = increaseMemory(input)
     let calculation = calc2(longInput)
-    let numberArray = calculation[0]
     let outputArray = calculation[1]
-    let finalCode = outputArray[outputArray.length - 1]
     setResult(outputArray.length)
   }
   return (
@@ -1157,13 +1155,13 @@ const increaseMemory = input => {
   return input2
 }
 
-const generateEmptyField2 = (rows, columns) => {
+/*const generateEmptyField2 = (rows, columns) => {
   const empty = []
   for (let i = 0; i < rows; i++) {
     empty.push(new Array(columns))
   }
   return empty
-}
+}*/
 
 const generateEmptyField = (rows, columns) => {
   const empty = []

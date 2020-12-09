@@ -3,9 +3,8 @@ import data from "./AdventCodeInputs/CodeAdvent201804.json"
 import "./component.css"
 
 export const CodeAdvent20180401 = () => {
-  const [observations, setObservations] = useState(data)
+  const [observations] = useState(data)
   const [result, setResult] = useState()
-
   function handleClick() {
     let output = computeObservations(observations)
     let finalNumber = strategyAnalysis(output)
@@ -194,7 +193,7 @@ function analyzeDays(dataSet, maxSleeper) {
     dayStatistics.push(0)
   }
   for (let row = 0; row < dataSet.length; row++) {
-    if (parseInt(dataSet[row].id) === maxSleeper) {
+    if (parseInt(dataSet[row].id) === parseInt(maxSleeper)) {
       for (let day = 0; day < dataSet[row].times.length; day++) {
         dayStatistics[day] = dayStatistics[day] + dataSet[row].times[day]
       }

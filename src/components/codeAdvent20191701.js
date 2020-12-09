@@ -3,13 +3,12 @@ import data from "./AdventCodeInputs/CodeAdvent201917.json"
 import "./component.css"
 
 export const CodeAdvent20191701 = () => {
-  const [input, setInput] = useState(data)
+  const [input] = useState(data)
   const [result, setResult] = useState()
 
   function handleClick() {
     let longInput = increaseMemory(input)
     let calculation = calc2(longInput)
-    let numberArray = calculation[0]
     let outputArray = calculation[1]
     let fieldInfo = generateField(outputArray)
     const intersectionInfo = countIntersections(
@@ -1278,7 +1277,6 @@ const move = (scaffold, direction, position) => {
 }
 
 const sumAlignmentParameters = intersections => {
-  const sum = 0
   const array = intersections.map(item => {
     const coordinates = item.split("-")
     return coordinates[0] * coordinates[1]

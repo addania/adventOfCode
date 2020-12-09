@@ -3,7 +3,7 @@ import data from "./AdventCodeInputs/CodeAdvent201805.json"
 import "./component.css"
 
 export const CodeAdvent20180501 = () => {
-  const [introPolymer, setIntroPolymer] = useState(data[0])
+  const [introPolymer] = useState(data[0])
   const [result, setResult] = useState()
 
   function handleClick() {

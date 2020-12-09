@@ -1,4 +1,3 @@
-import { includes } from "lodash"
 import React, { useState } from "react"
 import data from "./AdventCodeInputs/CodeAdvent202004.json"
 import "./component.css"

@@ -59,7 +59,7 @@ function fun(input) {
     }
 
     boardingPasses.push({
-      id: input[i],
+      num: input[i],
       row: startIndex,
       col: start,
       id: startIndex * 8 + start,

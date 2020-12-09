@@ -52,11 +52,6 @@ function fun(input) {
     }
   }
 
-  let finalArray = []
-  const colorz = Object.keys(data)
-
-  let total = 0
-
   const rec = color => {
     let count = 0
     let colorKeys = Object.keys(data[color])
