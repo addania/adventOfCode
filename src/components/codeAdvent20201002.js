@@ -105,6 +105,6 @@ function fun(sortedList, prefix, index) {
       }
     }
   }
-
+  console.log(final.length)
   return final.length
 }
