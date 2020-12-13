@@ -16,10 +16,10 @@ export const CodeAdvent20201002 = () => {
   }
   return (
     <div>
-      <p style={{ fontWeight: "bold" }}>XX:</p>
-      <p>YY: {total} </p>
+      <p style={{ fontWeight: "bold" }}>Adapter Array (in Progress):</p>
+      <p>Adapter arrangements: {total} </p>
       <button style={{ backgroundColor: "#7F6A93" }}>
-        <span onClick={handleClick}>Click</span>
+        <span onClick={handleClick}>Connect adapters</span>
       </button>
     </div>
   )
