@@ -33,7 +33,7 @@ export const CodeAdvent20201201 = () => {
     <div>
       <p style={{ fontWeight: "bold" }}>Rain Risk:</p>
       <p>Manhattan distance: {total} </p>
-      <button style={{ backgroundColor: "#8E0C0C" }}>
+      <button style={{ backgroundColor: "#C21F1F" }}>
         <span onClick={handleClick}>Navigate</span>
       </button>
     </div>

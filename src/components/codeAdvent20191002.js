@@ -10,7 +10,7 @@ export const CodeAdvent20191002 = () => {
   const [asteroidsCount, setAsteroidsCount] = useState()
   const [winnerAsteroid, setWinnerAsteroid] = useState({})
   const [positionCalculation, setPositionCalculation] = useState()
-  console.log(maxAsteroids, stationLocation, asteroidsCount)
+  //console.log(maxAsteroids, stationLocation, asteroidsCount)
   const handleClick = () => {
     const asteroidPositions = asteroidData
       .map((row, i) => getXCoordinates(row, i))
@@ -322,7 +322,7 @@ const vaporize = (
   asteroidArray
 ) => {
   if (count >= 200 || count >= asteroidArray.length) {
-    console.log("Im finished")
+    //console.log("Im finished")
   } else {
     verticalTop.forEach(item => {
       if (item.isSeen && !item.isVaporized) {

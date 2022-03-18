@@ -24,7 +24,6 @@ export const CodeAdvent20201101 = () => {
         forward = false
 
         finalLayout = newInput.string
-        console.log("finalLayout", finalLayout)
       } else {
         history.push(newInput.string)
       }
@@ -36,7 +35,7 @@ export const CodeAdvent20201101 = () => {
     <div>
       <p style={{ fontWeight: "bold" }}>Seating System:</p>
       <p>Occupied seats: {total} </p>
-      <button style={{ backgroundColor: "#8E0C0C" }}>
+      <button style={{ backgroundColor: "#A7A7A9" }}>
         <span onClick={handleClick}>Predict</span>
       </button>
     </div>
